@@ -1,0 +1,16 @@
+# Fdb version 3
+["pdflatex"] 1509043759 "main.tex" "main.pdf" "main" 1509043780
+  "/usr/local/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map" 1480098670 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
+  "/usr/local/texlive/2017/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1480098701 1288 655e228510b4c2a1abe905c368440826 ""
+  "/usr/local/texlive/2017/texmf-dist/tex/latex/base/article.cls" 1480098821 19821 310da678527a7dfe2a02c88af38079b7 ""
+  "/usr/local/texlive/2017/texmf-dist/tex/latex/base/size12.clo" 1480098821 8303 1d67e16498f00f63da792fab169302fc ""
+  "/usr/local/texlive/2017/texmf-dist/web2c/texmf.cnf" 1494087824 32646 eadc4ca26cdbe7105ac7c593aa8c4f72 ""
+  "/usr/local/texlive/2017/texmf-var/web2c/pdftex/pdflatex.fmt" 1495593487 4129592 0e6cfee100d68e6d96b92c0258f2ff73 ""
+  "/usr/local/texlive/2017/texmf.cnf" 1495593465 577 2b71d4d888f9e5560b2e99985915a9fa ""
+  "main.aux" 1509043758 8 a94a2480d3289e625eea47cd1b285758 ""
+  "main.tex" 1505272324 1158 bfe89c193562ef3ae7250304ee1c08d6 ""
+  "preamble/preamble.tex" 0 -1 0 ""
+  "preamble/preamble_lecture.tex" 1505272324 1521 44d81ba0228643fb3c8b2e4b21f0dddf ""
+  (generated)
+  "main.pdf"
+  "main.log"
