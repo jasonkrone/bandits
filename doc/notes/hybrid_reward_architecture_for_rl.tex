@@ -1,0 +1,42 @@
+\section{Hybrid Reward Architecture for Reinforcement Learning [Jason]}
+
+Proposes the Hybrid Reward Architecture, which takes as input a decomposed reward function
+and learns a separate value function for each component reward function.
+
+If the optimal value function is very complex, then learning an accurate low-dimensional
+representation can be challenging or even impossible. They suggest replacing the true reward
+function with another reward function that has a smoother, easier to learn optimal value function.
+They decompose the reward function into n different reward functions, which are each assigned
+to a sub-agent. These agents learn in parallel and give values for actions back to an aggregator,
+which combines them into a single action-value for each actions. The aggregator can then
+use these action-values to select the current action.
+
+\begin{itemize}
+    \item Performance objective: specifices what type of behavior is desired
+    \item Training objective: provides feedback signal that modifies an agents behavior
+\end{itemize}
+
+The decompose the reward function into
+$$R_{env}(s,a) = \sum_1^nw_kR_k(s, a)$$
+
+The different agents can share lower-levels of a deep Q-network so they can also
+be seen as a single agent with multiple "heads". Where each head produces
+the action-value under a different reward function. They use the target
+function objective from the DQN paper. Q(0) return with target params that
+stay fixed for a short time.
+
+This architecture can exploit doman knolwedge by
+\begin{enumerate}
+    \item Removing irrelevant features
+    \item Identifying terminal states
+    \item Using pseudo-reward functions
+\end{enumerate}
+
+They test their model on a task of picking up fruit on a grid environment.
+In this task HRA outperfomed DQN by a considerable amount.
+
+They also run an experiment on Pac Man. Each head in this experiment
+learning the Q-values for getting to a particular location in the map.
+The perfomance boost on pac man is unbelievably good ~10x.
+
+
