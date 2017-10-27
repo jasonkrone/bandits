@@ -1,0 +1,18 @@
+\section{Horde: A Scalable Real-time Architecture for Learning Knowledge from Unsupervised Sensorimotor Interaction [Jason]}
+
+Horde formulates the problem of Hierarchical Reinforcement learning as asking questions
+in the form of a value function, reward function, termination function, and terminal-reward function
+unrelated to those of the base problem to sub agents called "demons". These seem to take the
+form of reinforcmenet learning problems in and of themselves.
+
+These demons learn "knowledge" related to these subproblems in the form of approximate value
+functions learned through gradient based methods. The authors assert that it is possible
+for the value function approach to extend to a theory of all knowledge. (Unsure why they focus on this)
+
+This work specifically approximates the action-value function using the TD lambda algorithm.
+They also use the weight doubling trick, which I believe learns an additional parameter vector W
+that is intended to weight features and enable off-policy learning. (Not 100 percent clear on this)
+
+Experiments are run on a "Critterbot robot", which predicts quantities such as time-to-obstacle and
+time-to-stop. I believe the idea here is that these prediction algorithms could be used in the future
+as sub-routines for a control system.
