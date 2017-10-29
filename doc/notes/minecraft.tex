@@ -1,0 +1,61 @@
+\section{A Deep Hierarchical Approach To Lifelong Reinforcement Learning In Minecraft}
+
+The authors seek to solve the problem of "Lifelong Learning" in which learners
+\begin{enumerate}
+\item 
+retain knowledge they have learned
+\item
+selectively transfer knowledge to learn new tasks
+\item
+ensure 1 \& 2 happen effectively and efficiently
+\end{enumerate}
+
+They claim that any framework which does this must 
+\begin{enumerate}
+\item
+learn skills (options in some literature)
+\item
+learn a controller which determines when a skill should be used and reused
+\item
+efficiently accumulate reusable skills
+\end{enumerate}
+
+Knowledge is retained by incorporating reusable skills via a Deep Skill Module. There are two types of Deep Skill Modules, pre-trained Deep Skill Network arrays, or a multi-skill distillation network. The multi-skill distillation network is the author's novel variation of policy distillation applied to learning skills.
+
+The authors call this a Hierarchical Deep Reinforcement Learning Network (H-DRLN).
+
+DSN Array
+- Each DQN is independent
+
+Multi-Skill network
+- A single Deep Neural Network represents multiple DSNs (sharing hidden layers)
+
+The multi-skill network allows them to incorporate multiple skills in a single network
+
+Since independent skills take control away from the H-DRLN, they needed to optimize the Skill Bellman Equation rather than the standard Bellman Equation, and use Experience Relays (queues) to track actions taken by skills.
+
+Actions
+\begin{enumerate}
+\item
+Turn left/right 30 degrees
+\item
+move forward
+\item
+break a block
+\item
+pick up an item
+\item
+put down an item
+\end{enumerate}
+
+DSNs that were trained
+\begin{enumerate}
+\item
+two navigation domains
+\item
+a pickup domain
+\item
+placement domain (break is the same as place)
+\end{enumerate}
+
+The Authors set up an experiment in which the agent needed to navigate through rooms, pick up an object, place an object, and break a door, at which point it would finally recieve a small non-negative reward. In a domain with two rooms, the authors trained both the H-DRLN and vanilla DQN. The H-DRLN was able to solve the task after just one epoch, and generated significantly higher rewards.
