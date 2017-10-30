@@ -2,15 +2,15 @@
 \input{preamble/preamble_lecture}
 
 % Take the four files below from papers/preamble.
-%\input{preamble/preamble}
-%\input{preamble/preamble_acronyms}
-%\input{preamble/preamble_math}
-%\input{preamble/preamble_tikz}
+\input{preamble/preamble}
+\input{preamble/preamble_acronyms}
+\input{preamble/preamble_math}
+\input{preamble/preamble_tikz}
 
 \newcommand{\xnewcommand}[2]{\newcommand{#1}{#2\xspace}}
 \xnewcommand{\coursenum}{COMS E6998}
 \xnewcommand{\coursetitle}{Bandits and Reinforcement Learning}
-\xnewcommand{\instructors}{Agarwal and Slivkins}
+\xnewcommand{\instructor}{Agarwal and Slivkins}
 \xnewcommand{\term}{Fall 2017}
 
 \title{%
@@ -20,7 +20,7 @@
 \author{
 \\
 Instructors: \\
-\instructors \\
+\instructor \\
 Columbia University \\
 }
 
@@ -41,13 +41,19 @@ Learning Papers. The PDFs for each of these papers is available in the /ref dire
 \tableofcontents
 \clearpage
 
-\input{paper_example}
-
-\clearpage
-
 \input{horde}
 
 \clearpage
+
+\input{hybrid_reward_architecture_for_rl}
+
+\clearpage
+
+\input{minecraft}
+
+\clearpage
+
+\input{stochastic_nns_for_hrl}
 
 \bibliographystyle{apalike}
 \bibliography{bib}

@@ -1,1 +1,5 @@
-\contentsline {section}{\numberline {1}Paper Title}{3}
+\select@language {english}
+\contentsline {section}{\numberline {1}Horde: A Scalable Real-time Architecture for Learning Knowledge from Unsupervised Sensorimotor Interaction [Jason]}{3}{section.1}
+\contentsline {section}{\numberline {2}Hybrid Reward Architecture for Reinforcement Learning [Jason]}{4}{section.2}
+\contentsline {section}{\numberline {3}A Deep Hierarchical Approach To Lifelong Reinforcement Learning In Minecraft}{5}{section.3}
+\contentsline {section}{\numberline {4}Stochastic Neural Networks for Hierarchal Reinforcement Learning Michael Chess}{7}{section.4}

@@ -1,9 +1,3 @@
 \begin{thebibliography}{}
 
-\bibitem[Mnih et~al., 2013]{one}
-Mnih, V., Kavukcuoglu, K., Silver, D., Graves, A., Antonoglou, I., Wierstra,
-  D., and Riedmiller, M. (2013).
-\newblock Playing atari with deep reinforcement learning.
-\newblock {\em arXiv preprint arXiv:1312.5602}.
-
 \end{thebibliography}
