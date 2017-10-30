@@ -1,0 +1,10 @@
+\section{Bootstrapping Skills}
+\begin{enumerate}
+\item Skills are options for a parametrized policy.
+\item One of the key ideas behind skills is that they may be learned locally, but they can be used throughout the entire state-space
+\item For a given partition of the state space, and a value function, we define a skill MDP where the state space is the partition plus a terminal state, the actions are unchanged, and the transition and reward functions are piecewise defined depending on whether the state is in the partition.
+\item Learning a good set of skills improves planning.
+\item Learning Skills with Bootstrapping is an Iterative Algorithm that takes a partition and target MDP as inputs and returns a policy and set of learned skills. The policy is simply to apply the skill associated with the partition of the current state. Each iteration involves evaluating the policy with the current set of skills, then solving for a new skill MDP as defined above. 
+\item The paper proves near-optimality, bounding the difference between the learned policy and the optimal policy based on the number of iterations.
+\item LSB is a meta-algorithm, in order for it to work, we need to provide algorithms for policy evaluation (SMDP-LSTD) and skill-learning (Regular-Gradient Actor-Critic).
+\end{enumerate}

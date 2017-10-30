@@ -1,0 +1,11 @@
+\section{A Laplacian Framework for Option Discovery in Reinforcement Learning}
+\begin{enumerate}
+\item A proto-value function is an eigenvector of the Laplacian of the state-space.
+\item An eigenpurpose is defined for a particular PVF as the product of the transpose of the PVF and the difference in the feature representation of the of the two states. The eigenpurpose can be thought of as an intrinsic reward function, because you don’t need to know anything about the environment to calculate it.
+\item For a given eigenpurpose, the associated eigenbehavior is the optimal policy for the reward function defined by the eigenpurpose. This is the same as maximizing the discounted return function with the eigenpurpose as the reward function.
+\item For a given eigenpurpose, an eigenoption is an option with an initiation and termination state. The termination state occurs when the eigenpurpose is at its highest state. \item The paper provides a proof that this state exists.
+\item The paper measures diffusion time versus number of options with random walk as a benchmark.
+\item The paper also proves that if every transition is sampled once, the eigenvectors of the incidence matrix is the same as the eigenpurposes found with the Laplacian. This can be applied to a feature-state representation of the state-space.
+\end{enumerate}
+
+

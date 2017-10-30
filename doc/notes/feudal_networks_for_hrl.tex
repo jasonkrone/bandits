@@ -1,0 +1,13 @@
+\section{FeUdal Networks for Hierarchical Reinforcement Learning}
+\begin{enumerate}
+\item Neural-network architeture with two levels, a Manager and a Worker. The Manager learns a latent state space with a lower temporal resolution and sets goals in this space. The worker is motivated to follow these goals by an intrinsic reward while the goals are selected to maximize an extrinsic reward.
+\item The worker and manager share a perception module which takes in an observation from the environment and calculates an intermediate representation (CNN with a fully connected layer at the end)
+\item Manager training is done using a transition policy gradient to output goals
+\item The worker is trained with an intrinsic reward to help these actions be achieved (LSTM).
+\item The goal embedding space has a much smaller dimension than the state space, goals are pooled over several time steps.
+\item Using a standard reinforcement learning setup, the networks starts with an observation and responds with an action until a terminal state is reached, trying to maximize discounted return.
+\item Although the network is fully differentiable, the manager and worker are trained separately, so that the goals have greater meaning.
+\item The worker is trained to maximize a weighted (hyperparameter) sum of intrinsic and extrinsic reward
+\end{enumerate}
+
+
