@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{bandits}
+\author{rp2816 }
+\date{October 2017}
+
+\begin{document}
+
+\maketitle
+
+\section{FeUdal Networks for Hierarchical Reinforcement Learning}
+\begin{enumerate}
+\item Neural-network architeture with two levels, a Manager and a Worker. The Manager learns a latent state space with a lower temporal resolution and sets goals in this space. The worker is motivated to follow these goals by an intrinsic reward while the goals are selected to maximize an extrinsic reward.
+\item The worker and manager share a perception module which takes in an observation from the environment and calculates an intermediate representation (CNN with a fully connected layer at the end)
+\item Manager training is done using a transition policy gradient to output goals
+\item The worker is trained with an intrinsic reward to help these actions be achieved (LSTM).
+\item The goal embedding space has a much smaller dimension than the state space, goals are pooled over several time steps.
+\item Using a standard reinforcement learning setup, the networks starts with an observation and responds with an action until a terminal state is reached, trying to maximize discounted return.
+\item Although the network is fully differentiable, the manager and worker are trained separately, so that the goals have greater meaning.
+\item The worker is trained to maximize a weighted (hyperparameter) sum of intrinsic and extrinsic reward
+
+\end{enumerate}
+
+\section{A Laplacian Framework for Option Discovery in Reinforcement Learning}
+\begin{enumerate}
+\item A proto-value function is an eigenvector of the Laplacian of the state-space.
+\item An eigenpurpose is defined for a particular PVF as the product of the transpose of the PVF and the difference in the feature representation of the of the two states. The eigenpurpose can be thought of as an intrinsic reward function, because you don’t need to know anything about the environment to calculate it.
+\item For a given eigenpurpose, the associated eigenbehavior is the optimal policy for the reward function defined by the eigenpurpose. This is the same as maximizing the discounted return function with the eigenpurpose as the reward function.
+\item For a given eigenpurpose, an eigenoption is an option with an initiation and termination state. The termination state occurs when the eigenpurpose is at its highest state. \item The paper provides a proof that this state exists.
+\item The paper measures diffusion time versus number of options with random walk as a benchmark.
+\item The paper also proves that if every transition is sampled once, the eigenvectors of the incidence matrix is the same as the eigenpurposes found with the Laplacian. This can be applied to a feature-state representation of the state-space.
+
+\end{enumerate}
+
+\section{Bootstrapping Skills}
+\begin{enumerate}
+\item Skills are options for a parametrized policy.
+\item One of the key ideas behind skills is that they may be learned locally, but they can be used throughout the entire state-space
+\item For a given partition of the state space, and a value function, we define a skill MDP where the state space is the partition plus a terminal state, the actions are unchanged, and the transition and reward functions are piecewise defined depending on whether the state is in the partition.
+\item Learning a good set of skills improves planning.
+\item Learning Skills with Bootstrapping is an Iterative Algorithm that takes a partition and target MDP as inputs and returns a policy and set of learned skills. The policy is simply to apply the skill associated with the partition of the current state. Each iteration involves evaluating the policy with the current set of skills, then solving for a new skill MDP as defined above. 
+\item The paper proves near-optimality, bounding the difference between the learned policy and the optimal policy based on the number of iterations.
+\item LSB is a meta-algorithm, in order for it to work, we need to provide algorithms for policy evaluation (SMDP-LSTD) and skill-learning (Regular-Gradient Actor-Critic).
+\end{enumerate}
+
+\end{document}
