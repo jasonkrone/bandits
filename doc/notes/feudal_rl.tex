@@ -1,0 +1,36 @@
+\section{Feudal Reinforcement Learning [Jason]}
+
+Management hierarchy can help with
+\begin{enumerate}
+    \item temporal resolution: expanding the unit of learning from the smallest possible step in the task
+    \item division-and-conquest: finding smaller subtasks that are easier to solve
+    \item exploration
+\end{enumerate}
+
+They use a manager worker setup where the only choice a manager has is over the tasks it sets.
+
+\textbf{Key Principles}
+\begin{itemize}
+    \item Reward Hiding: Managers must reward sub-managers for doing their bidding whether or not this
+          satisfies the commands of super-managers.
+    \item Information Hiding: Managers only need to know the state of the system at the granularity of
+          their own choices of tasks. The task of each agent (manager / submanager) is only known to that
+          agent. Managers do need to know satisfaction conditions for tasks they set.
+\end{itemize}
+
+When a amanager chooses an action, control is passed to the sub-manager and is only returned when
+the state changes at the managerial level. The actions are NSEW and *, which specificies that
+the worker should search for the goal in the current state space of the manager.
+
+They run expierements on a multi-level maze where the agent is trying to find a goal.
+Learning begins bottom up and then switches to top down after it learns appropriate actions
+at the highest levels. Feudal Q networks outperform Standard Q networks in this task.
+It's easier for the agent at the top level to determine what to do because there are
+fewer states at the top level (in this experiment).
+
+The main concern with this approach is that the non-markovian nature of the task at the
+higher levels (future course of the agent is determined by more than just the high level states)
+may make the problem insoluable.
+
+
+
