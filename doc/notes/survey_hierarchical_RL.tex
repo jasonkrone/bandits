@@ -1,0 +1,113 @@
+\section{Recent Survey of Hierarchical Reinforcement Learning}
+
+This paper rewinds important concepts of Reinforcement Learning, Markov and Semi-Markov Decision Processes; understands the need for hierarchical reinforcement learning; briefly describes the three important frameworks of hierarchical RL – Options, HAM and MAXQ; explores the research undertaken in Sridhar’s lab; and lists the future applications of Hierarchical RL.
+
+
+\subsection{Introduction to hierarchy}
+\begin{enumerate}
+\item[] Divide a single problem into multiple sub-problems
+\item[] Main idea is to learn solutions to sub-problems which can be used over and over again. For instance, walking is a learnt solution which is repeatedly used by humans 
+\item[] Issue: Ways to identify a sub-problem
+\end{enumerate}
+
+
+
+\subsection{Need for hierarchy} 
+\begin{enumerate}
+\item Temporal Abstraction: Divide a problem into sub-problem. Each sub-problem might take different amount of time to be solved. Hence, hierarchies abstracts away the notion of time. Hierarchies can also be developed to spend lesser efforts on tasks which are not repeated often
+
+\item Ability to transfer/re-use: The solutions to the sub-problems can be reused  
+
+\item Meaningful: It might be easier to understand, learn and solve a smaller sub-problem as compared to the entire problem
+
+\item State Abstraction: When a problem is divided into sub-problems, you start focusing on things that are only needed for sub-problems. Hence, this results in reduced state space. In other words, you will have fewer parameters to consider in each state 
+\end{enumerate}
+
+
+
+
+\subsection{Types of Optimality}
+\begin{enumerate}
+\item Hierarchically Optimal: Respect the hierarchy first and thus, deviations from the optimal solutions to sub-problem is allowed. In other words, find a path which is similar to that of optimal paths of the sub-problems, but be liberal and allow minor deviations
+
+\item Recursively Optimal: Follow the optimal solutions of the sub-problems 
+
+\item Flat Optimal: Just find the optimal path from beginning to end. Does not obey the rules of hierarchical RL
+\end{enumerate}
+
+
+
+\subsection{Frameworks}
+\subsubsection{Options}
+\begin{enumerate}
+\item[] Most famous approach
+
+\item[] Assumes every action has a set of pre and post conditions. Pre-conditions defined by initialization rule and the post conditions by the termination rules. An option consists of all the set of actions from the initial state to the terminal state. As each action in a state can have different duration, it is known as SMDP
+
+\item[] The set of actions with-in an option demonstrates the hierarchy
+
+\item[] In SMDP, every action has a time factor associated with it, which determines the time taken to complete the action from one state to another. This is semi-markov as it does not depend on any other state than the current state and there is just a partial dependence on time, indicating the time spent by the action in the transition
+
+\item[] Options might also consist of primitive actions or can consists of sub-options
+
+\item[] Options assume that all sub-problems are already solved and are given as policies
+
+\item[] It does not specify ways to change option policies. Also, not many ways to learn policies are mentioned in this framework
+
+\item[] One insight about options is that when a single option update is performed, then updates on all other options consistent with the given option can also be performed 
+\end{enumerate}
+
+
+
+\subsubsection{HAM}
+\begin{enumerate}
+\item[] One of the earliest frameworks but not much research done in it 
+\item[] Simple Finite State Machines are defined to encode the policies (state – action mappings) to follow 
+\item[] Every machine has four states: Action State (Takes inputs and emits Actions), Call State (Calls another machine), Choice State (Makes a non-deterministic transition to two or more states in the same machine) and Stop State (Stops and returns back the control to the machine that called it)
+\item[] In all the cases, input is some underlying state of the MDP and outputs are primitive actions 
+\item[] You keep on transiting from one state to another, until an action is emitted 
+\item[]	The call state defines the hierarchy here 
+\end{enumerate}
+
+
+\subsubsection{MAXQ}
+\begin{enumerate}
+\item[] Take original problem and divide it into sub-tasks. These subtasks forms the hierarchy
+\item[] Like options, each sub-tasks consists of state variables, actions and pseudo-rewards
+\item[] Pseudo rewards assigns reward values to the states in the state variables. It is used only during learning 
+\end{enumerate}
+
+
+
+
+\subsection{Advances in RL (Sridhar's Lab)}
+\subsubsection{Concurrent Activities}
+\begin{enumerate}
+\item[] Explores ways to manage concurrent activities
+\item[] Uses multi-option strategy- Set of options that can be executed in parallel
+\item[] SMDP Q-learning is used for updating the policies
+\end{enumerate}
+
+\subsubsection{Multi-agent Coordination}
+\begin{enumerate}
+\item[] Techniques where you have multiple agents exploring the state space to learn a policy. Coordination is the key
+\item[] Each agent has a partial view of the state. Action is defined as the joint action of all the agents put together
+\item[] Each action is considered as a fixed option with a pre-specified policy
+\item[] Agents learn coordination using a MAXQ task graph
+\end{enumerate}
+
+\subsubsection{Hierarchical Memory}
+\begin{enumerate}
+\item[] Tackles the problem of hidden state of other agents in a multi-agent environment
+\item[] Uses Partially Observable MDP (POMDP)
+\item[] As POMDP’s are not scalable, a new algorithm named hierarchical POMDP was developed
+\end{enumerate}
+
+
+\subsection{Future Research}
+\begin{enumerate}
+\item[] Compact Representations to Options
+\item[] Learning to form task hierarchies automatically
+\item[] Dynamic Abstractions of States based on activities
+\item[] Exploring large applications like Atari 
+\end{enumerate}
