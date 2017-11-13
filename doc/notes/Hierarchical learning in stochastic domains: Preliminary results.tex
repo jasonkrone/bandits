@@ -1,0 +1,17 @@
+\section{Hierarchical learning in stochastic domains: Preliminary results}
+
+\begin{outline}
+\1 Q learning vs DG learning
+\2 These are effectively the same except DG (Dynamic Goal) learning is a little more effective when there is only one goal
+\3 note: DG learning only applies when you want the agent to arrive at a conclusion in the minimum number of steps \href{http://people.csail.mit.edu/lpk/papers/ijcai93.ps}{link}
+\3 they assume that the world still makes stochastic transitions, but there is no reinforcement function
+\2 However, DG learning is much easier to extend to multiple goals
+\3 section 2.3 of the paper
+\1 HDG from 1000 feet
+\2 When we plan a driving route, we don't plan out the whole route to the destination immediately. We route from our current location to the highway on-ramp, to the highway exit, then from the exit to the destination
+\2 This is called a Landmark Network
+\3 Which is just a fancy way to say graph/network
+\2 Learning algorithm is in section 4.2
+\3 The learning algorithm is almost the same as multi-goal DG learning, except because the goals are just the neighboring landmarks, the number of updates needed is much smaller
+\2 they saw an over 3x improvement in speed in their admittedly naive impl.
+\end{outline}
