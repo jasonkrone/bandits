@@ -1,0 +1,15 @@
+\section{Sub-domain Modelling for Dialogue Management with Hierarchical Reinforcement Learning [Jason]}
+
+\begin{itemize}
+    \item Uses options for multi-domain dialogue management
+    \item Gaussian processes are used for function approximation
+    \item Policies are able to call temporally extended sub tasks
+    \item Option has $\langle \pi , \beta ,  I \rangle$ where $\pi$ is a policy, $\beta$ is
+          a termination condition and $I$ is an input set of states where the option is available
+    \item semi-Markov Decision Process (SMDP) allows actions to take a variable amount of time to complete
+    \item Pseudo-rewards are used to train subdomains using an internal critic which determines if
+          the sub-goal has been reached
+    \item They apply this method to the problem of booking a resturant or a hotel. The subdomains in this
+          are booking and payment.
+    \item HRL apprach learns more quickly and has a higher return than the flat approach
+\end{itemize}
