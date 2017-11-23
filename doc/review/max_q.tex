@@ -1,0 +1,35 @@
+\section{MAX-Q Reinforcement Learning [Mike]}
+\textbf{Description} \\
+Max-Q reinforcement learning takes inspiration from both feudal learning and HAMs. Similar to feudal learning Max-Q breaks a goal into a hierarchy of tasks and subtasks (similar to managers and submanagers). Though these tasks and subtasks must be defined by the programmer, there has been some research into automatic discovery of tasks like landmark states and bottleneck discovery. \\
+
+Like a HAM, the Max-Q framework decomposes the goal task without increasing the state space. What separates the Max-Q framework from HAM and feudal learning is the decomposition of the value function. In Max-Q learning, the value function takes the following form.
+
+\begin{math}
+V^{\pi}(i, s) = 
+\begin{cases}
+V^{\pi}(a, s) + c^{\pi}(i, s, a), & \text{if i is composite}\\
+\Sigma_{s'}P(s'|s, i)R(s'|s, i), & \text{if i is primitive}
+\end{cases}
+\end{math}
+
+Where $c^{\pi}$ is the completion value, which is realized when the chosen subtask is completed. 
+
+As with all frameworks, this one has strengths and weaknesses, we will begin discussing the strengths.
+
+\textbf{Strengths}
+\begin{itemize}
+    \item Max-Q learning introduces recursive optimality, which allows subtasks	to reach their goals independent of the needs of the parent task.
+    \item Depending on the decomposition of subtasks, related subtasks can share experience.
+    \item The state space is decreased for each individual task.
+\end{itemize}
+
+\textbf{Weaknesses}
+\begin{itemize}
+    \item A recursively optimal solution is not necessarily globally optimal. 
+    \item Task decomposition must be done manually, and a poor decomposition could lead to unexpected results
+    \item A chosen action that is running to completion may become suboptimal during its execution.
+\end{itemize}
+
+\textbf{Flexibility} \\
+Because Max-Q learning decomposes tasks in the same way as feudal learning, it is no more flexible in application.
+
