@@ -1,0 +1,29 @@
+\section{HAM Reinforcement Learning [Sri]}
+\textbf{Description} \\
+
+HAM brings about the concept of machines. A machine is a partial policy represented by a Finite State automaton. Thus, a machine has multiple states and actions, providing both state and temporal abstraction. Learning occurs within machines, as they are only partially defined. //
+
+Rather than expanding action choices like in options, it restricts the size of the class of policies. By doing it across multiple layers, HAMS allows policies to be specified as  hierarchies of stochastic finite-state machine. Thus, it exploits the advantages of SMDP with a simplied MDP. //
+
+In HAM, the entire system is considered as a collection of machines. The machines have states. The possible states are: Action, Call, Choice and Stop. An action state generates an action of a core MDP. The call state halts the execution of the current machine and calls for the execution of another machine. The choice state non-deterministically selects the next state. The stop state terminates the execution of the current machine. The stack of calls brings about the hierarchy. When the initial state has actions with no call states, then this acts as a solution to basic flat RL. Being hierarchical, SMDP Q-learning can be applied to this set-up as well//
+
+There are no large applications of HAM's so far. Modified frameworks like Programmable HAM's are provided. //
+
+
+\textbf{Strengths}
+\begin{itemize}
+    \item Theoretically, it is the most flexible framework allowing multiple inputs like policy, task hierarchy and effort required. Note that except for the policy, other inputs are optional
+    \item Can be extended to partial programs 
+    \item Has lesser stringent requirements than options
+    \item Allows concurrency by letting simultaneous functioning of multiple machines
+    \item Abstraction can be embedded into the system using three value decomposition
+    \item Provides a richer representation and concurrency
+\end{itemize}
+
+\textbf{Weaknesses}
+\begin{itemize}
+    \item Needs a proper mechanism for designing the machines 
+    \item Requires a complete policy
+    \item No abstraction is provided in the original specification 
+\end{itemize}
+
