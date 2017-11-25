@@ -1,0 +1,37 @@
+\section{Options Reinforcement Learning [Sri]}
+\textbf{Description} \\
+
+We know that MDP is discrete time stepped, on the other hand SMDP is continuous. Options aim to take the advantages of both MDP and SMDP to create discrete time SMDP. Options are temporally extended actions with well-defined policies. In the hierarchical set-up, the set of actions are replaced by a set of options. //
+
+Options give both temporal and state abstraction by developing a notion of a state. That notion is developed by providing the initial and termination condition for any state, along with a policy to be followed in that space. It also has a set of states which denote the states for the given option. Timeout conditions are also used for termination. //
+
+Consider the open-the-door example for a robot system. This option considers the policy for reaching, grasping and turning the door knob. The door being opened is the termination condition. Input states is the set of states the robot can be in. The open-the-door option can indeed be a part of a big goal to go from one place to another. Hence, options provide a way for hierarchical lerarning \\
+
+
+In policies, Policy over options selects option o in state s with some probability until the option terminates. The probability of an action at any time step depends on the current state plus the policies of all options involved in the current specification.  Hierarchical options are same as options but that there policy is defined over Semi Markov Process rather than a fully markov one. Thus, the value functions for options are similar to that of semi-markov policies. Any policy which is not hierarchical is flat. // 
+
+
+Note that, options combine the strengths of both MDP and SMDP. The options defined so far form a part of core MDP. Semi-Markov Options have policies set based on probabilities. 
+Adding semi markov options to a core MDP (simple finite MDP with simplest option) yields discrete-time SMDP whose actions are options and rewards are the returns delivered during the options’ execution. //
+
+In options, learning occurs at the terminal state. Policies are learnt greedily. Intra-options algorithm give a new way to evaluate the rewards and actions before termination. //
+
+As with all frameworks, this one has strengths and weaknesses, we will begin discussing the strengths.
+
+\textbf{Strengths}
+\begin{itemize}
+    \item Provide a faster rate of learning during the intial stages
+    \item If the state of options does not include one-step options with primitive actions, then they can be very easily solved. In this case, options provide both simplicity and augmentation
+    \item The state space is decreased for each individual task.
+\end{itemize}
+
+\textbf{Weaknesses}
+\begin{itemize}
+    \item Requires complete specification of policies and hence, the requirements are stringent
+    \item Unlike HAM, they can input only a complete policy. Task hierarchies and other user requirements like amount of effort cannot be taken as inputs
+    \item Does not simply complex MDP
+    \item Policy learning achieves optimal subgoals and assumes that a chain of such subgoals yiels overall global optimum which need not be true
+\end{itemize}
+
+\textbf{Flexibility} \\
+It extends the notion of MDP from RL, and hence the flat options can be used as any RL framework
