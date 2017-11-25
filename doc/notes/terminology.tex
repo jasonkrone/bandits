@@ -1,0 +1,40 @@
+\section{Terminology [Sri]}
+\textbf{Markov Decision Process} \\
+
+A Markov Decision Process (MDP) model contains: 
+\begin{itemize}
+\item A set of possible world states S 
+\item A set of possible actions A 
+\item A real valued reward function R(s,a) 
+\item A description T of each action’s effects in each state.
+\end{itemize}
+\\
+\textbf{Policy} \\
+Policy \pi, is a mapping from S to A. Given a state, it tells the action to be taken. Following a policy assumes full observability. In other words, it is assumed that the new state resulting for executing an action will be known to the system
+\\
+
+\textbf(Types of Actions)\\
+Two types of actions: Deterministic and Stochastic. In Deterministic, for each state and action, we specify a new state. Whereas on the other hand for stochastic, for each state and action, we specify a probability distribution over next states, represented by P(s’|s, a). \\
+
+In order to evaluate the rewards of deterministic actions, we simply need to add the rewards. However, in the stochastic setup, the expected reward will be computed rather. Both these however, yield an infinite value. In order to bound these infinite values, objective functions are used. Objective functions map infinite rewards to single numbers known as utility. Different objective functions are possible:
+
+\begin{itemize}
+\item Set a finite horizon and total the rewards
+\item Discounting to prefer earlier rewards. A reward n steps away is discounted by gamma which is a probability between 0 to 1. This assumes that, nearer the rewards more valuable they are. Hence, at an infinite distance, the reward becomes negligible and equal to 0
+\item Average reward rate in the limit 
+\end{itemize}
+\\
+
+
+\textbf{Value Functions} \\
+Value function represents the expected objective value obtained by following policy pi from each state S. They partially order the policies.\\
+Bellman equations relate the value functions to itself in the given problem dynamics
+\\
+
+
+\textbf{POMDP} \\
+System state can not always be determined. This gives rise to Partially Observable MDP (POMDP). A belief state is a state in POMDP. It is a distribution over the set of states indicating “WHERE I THINK I AM CURRENTLY”. A POMDP is Markovian and fully observable with respect to the belief state
+
+
+\textbf{Action-value functions}\\
+Action value functions Q denote the expected infinite-horizon discounted return. Given a policy, it denotes the expected return on executing action a in state s 
