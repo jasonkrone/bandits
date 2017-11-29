@@ -1,3 +1,6 @@
 \section{Introduction}
 
-Introduce the problem statement
+Reinforcement learning (RL) is the area of machine learning concerned with an agent interacting with an environment with the objective of learning the optimal behavioral policy to maximize a reward. When information about the environment and the rewards are known, dynamic programming approaches like value iteration can be used to determine an optimal policy. Otherwise, the agent must attempt to learn about rewards through interacting with the environment, by using the RMAX algorithm for example. In both of these cases, however, these algorithms do not scale well when the state space is large. 
+
+In particular, long horizon problems are difficult to solve using standard RL approaches. Hierarchical approaches to this problem aim to take advantage of trajectories that have common sub-components. Hierarchical RL aims to learn these sub-tasks and then combine them to solve the original problem. This might be done through temporally extended activites where decisions aren't required at every time step, but rather choosing activities that follow their own policies over several time steps until they terminate. 
+
