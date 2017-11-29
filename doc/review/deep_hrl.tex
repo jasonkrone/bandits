@@ -1,0 +1,34 @@
+\section{Recent Works on Hierarchical Reinforcement Learning}
+Note: for the purpose of this section we assume that recent works are papers released in 2016 or 2017.
+To a large degree recent work on hierarchical reinfocement learning focusses on leveraging recent advances in
+Deep Learning to augment the foundational hierarchical methods, which we described in the previous section.
+Consequently, recent papers are less theoretical and focus on techniques to improve the performance
+of existing methods when using neural networks as well as the application hirearchical reinforcement learning
+to new, more complex environments, such as the Atari suite of games.
+This section discusses the contribution of eight recent works. While undoubtably this list leaves out a number
+of recent hierarchical papers, it is our hope that the works selected provide a balanced view of the recent
+research direction. We organize this section by grouping papers with similar contributions, and discussing
+these groups in order of most to least theoretical.
+
+Before diving into the contributions made in these recent works, it is worth noting which of the frameworks
+(options, HAMs, Feudal RL, MaxQ) are used most often as the foundation for this new research.
+Options are by far the most popular base for these recent methods; specifically, seven of the eight
+papers that we discuss utilize the options framework. In contrast, only one paper bases their work
+on Feudal Reinforcement learning, and no papers extend HAMs or MaxQ. Although the reason for this is
+not entirely clear, our view is that the options framework was more consistantly developed in the interum
+between its conception in 1999 and 2015, which made it more appealing to build upon. Moreover, the options
+framework is more intuitive than HAM or MaxQ because an option esentially functions as a sub-policy that is
+selected like an action, and it is therefore quite easy to understand options given knolwedge of MDPs and policies.
+
+The most theoretical work is [option critic], which extends options to allow for end-to-end learning
+of internal policies and termination conditions for a given number of options using
+linear or non-linear function approximators. The primary contribution of this work is the proof
+of policy gradient theorems for options, which allow for the end-to-end learning of options.
+This is a significant development of the options framework because, to the best of our knowledge,
+all applications of Deep Learning to options aside from this paper have required internal policies
+and termination conditions to be pre-trained or pre-defined. While, the end-to-end learning of options
+is not yet prevelent in the literature, it is a logical extension, which gives superior performance, and
+will likely gain traction going forward. It is worth noting that one critism of this work,
+made in [Abiel], is that the options learned may be overly specific to the task at hand and not transfer well.
+
+We discuss future and ongoing challanges in the following section.
