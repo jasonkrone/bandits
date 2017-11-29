@@ -3,7 +3,7 @@ Note: for the purpose of this section we assume that recent works are papers rel
 To a large degree recent work on hierarchical reinforcement learning focusses on leveraging recent advances in
 Deep Learning to augment the foundational hierarchical methods, which we described in the previous section.
 Consequently, recent papers are less theoretical and focus on techniques to improve the performance
-of existing methods when using neural networks as well as the application hierarchical reinforcement learning
+of existing methods when using neural networks as well as the application of hierarchical reinforcement learning
 to new, more complex environments, such as the Atari suite of games.
 This section discusses the contribution of eight recent works. While undoubtedly this list leaves out a number
 of recent hierarchical papers, it is our hope that the works selected provide a balanced view of the recent
@@ -35,7 +35,7 @@ Although no other works have learned the internal policies and termination condi
 for the options they use, both [HDRL Integrating Temporal and Intrisinc] and
 [Stochastic NN] work to reduce the amount of hand engineering required
 to use options. [Stochastic NN] focuses on learning options in an unsupervised manner
-during a separate pre-training phase using a flexable proxy reward.
+during a separate pre-training phase using a flexible proxy reward.
 Specifically, [Stochastic NN] found that Stochastic neural networks coupled with
 a mutual information regularizer and a proxy reward, such as the speed of a
 robot for the continuous control setting, can reliably learn internal policies for
@@ -61,10 +61,10 @@ to decompose the state space and learn a separate value function
 for each region of the state space in order to reduce the complexity of the reward
 function that any single value function must approximate. The paper
 [Hybrid Reward Architecture for Reinforcement Learning] builds off this idea
-by decomposing the and reward function and learning separate value functions for
-each component of the reward function. The main contribution of this papers is
+by decomposing the reward function and then learning separate value functions for
+each component of the reward function. The main contribution of this paper is
 the formulation of a Hybrid Reward Architecture that takes as input a decomposed
-reward function trains a separate heads for each component on top of a shared based
+reward function and trains a separate head for each component on top of a shared based
 network using the DQN [cite DQN] algorithm. This architecture has the advantage of
 removing irrelevant features and is able to learn more quickly using the decomposed
 reward function, which is smoother and easier to optimize.
@@ -72,7 +72,7 @@ reward function, which is smoother and easier to optimize.
 We have discussed how both [Stochastic NN] and [HDRL Integrating Temporal and Intrisinc]
 use a single neural network conditioned on a goal to approximate the policies of each option.
 In addition to training such a network from scratch, it is also possible to distil
-the knowledge from many expert, internal policy networks to a single network with an
+the knowledge from many expert internal policy networks to a single network with an
 output head for each internal policy. This is the approach taken in [Minecraft], which
 demonstrates that distilation allows for shared knowledge and increases performance.
 The authors of this work extend the DQN algorithm by formulating a novel
