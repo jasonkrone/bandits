@@ -1,0 +1,34 @@
+\section{Ongoing Challenges}
+An issue central to Reinforcement Learning research is establishing common benchmarks
+that can be consistently used to compare different algorithms. The difficulty of
+doing this is especially pronounced for hierarchical reinforcement learning.
+The recent works discussed in this paper, excluding those on dialogue management,
+experiment on seven different environments (assuming that the suite of Atari games
+constitutes one environment). Consequently, only following pairs of papers
+can be directly compared to each other using the published results.
+
+\begin{enumerate}
+    \item Option-critic, Hybrid Reward Architecture for Reinforcement Learning, and
+          FeUdal Networks
+    \item Hierarchical Deep Reinforcement Learning: Integrating Temporal Abstraction
+          and Intrinsic Motivation and FeUdal Networks
+\end{enumerate}
+
+Moreover, some of the published models can not be easily applied to new evironements because
+they use goals or pseudo rewards that are envrionement dependent. It is also the case
+that published papers do not compare their hierarchical reinforcement learning system to
+other hierarchical reinforcement learning systems. None of the recent papers in this review
+used another hierarchical reinfocement learning system as a baseline, which makes it difficult
+to assess the quality of the method.
+
+The long term crdit assignment problem continuous to be difficult. Sparse rewards are an issue.
+Still no papers seem to learn the number of hierarchies to use in the system - this is not learned
+end to end. Possibly presents the use of a reinfocement learning agent optimizing another reinforcement
+learning agent.
+
+
+-
+-
+-
+-
+-
