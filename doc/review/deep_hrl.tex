@@ -25,27 +25,28 @@ of internal policies and termination conditions for a given number of options us
 linear or non-linear function approximators. The primary contribution of this work is the proof
 of policy gradient theorems for options, which allow for the end-to-end learning of options.
 This is a significant development of the options framework because, to the best of our knowledge,
-all applications of Deep Learning to options aside from this paper have required internal policies
-and termination conditions to be pre-trained or pre-defined. While, the end-to-end learning of options
-is not yet prevalent in the literature, it is a logical extension, which gives superior performance, and
-will likely gain traction going forward. It is worth noting that one criticism of this work,
-made in [Abiel], is that the options learned may be overly specific to the task at hand and not transfer well.
+all applications of Deep Learning to options aside from this paper have required either the internal policies
+or termination conditions to be pre-trained or pre-defined. While, the end-to-end learning of both internal policies
+and termination conditions is not yet prevalent in the literature, it is a logical extension, which gives superior
+performance, and will likely gain traction going forward. It is worth noting that one criticism of this work,
+, made in [Abiel], is that the options learned may be overly specific to the task at hand and not transfer well
+to new similar tasks.
 
 Although no other works have learned the internal policies and termination conditions
 for the options they use, both [HDRL Integrating Temporal and Intrisinc] and
 [Stochastic NN] work to reduce the amount of hand engineering required
-to use options. [Stochastic NN] focuses on learning options in an unsupervised manner
+to use options. [Stochastic NN] focuses on learning internal policies for options in an unsupervised manner
 during a separate pre-training phase using a flexible proxy reward.
 Specifically, [Stochastic NN] found that Stochastic neural networks coupled with
 a mutual information regularizer and a proxy reward, such as the speed of a
-robot for the continuous control setting, can reliably learn internal policies for
+robot in the continuous control setting, can reliably learn internal policies for
 options with minimal supervision. In contrast,
 [HDRL Integrating Temporal and Intrisinc] jointly learns both the policy over options
 as well as the internal policy used when executing the options. Both papers choose to
 use a single neural network to approximate all internal option policies. They do this
 by conditioning the network on a goal $g$, which can be thought of as selecting the
 appropriate internal option for the network to approximate. Using a single network
-to approximate all internal option policies has the benefits of sharing knowledge
+to approximate all internal option policies has the benefit of sharing knowledge
 across similar tasks as well as allowing space complexity to remain constant as
 the number of options grow.
 
@@ -64,7 +65,7 @@ function that any single value function must approximate. The paper
 by decomposing the reward function and then learning separate value functions for
 each component of the reward function. The main contribution of this paper is
 the formulation of a Hybrid Reward Architecture that takes as input a decomposed
-reward function and trains a separate head for each component on top of a shared based
+reward function and trains a separate head for each component on top of a shared base
 network using the DQN [cite DQN] algorithm. This architecture has the advantage of
 removing irrelevant features and is able to learn more quickly using the decomposed
 reward function, which is smoother and easier to optimize.
@@ -74,20 +75,21 @@ use a single neural network conditioned on a goal to approximate the policies of
 In addition to training such a network from scratch, it is also possible to distil
 the knowledge from many expert internal policy networks to a single network with an
 output head for each internal policy. This is the approach taken in [Minecraft], which
-demonstrates that distilation allows for shared knowledge and increases performance.
-The authors of this work extend the DQN algorithm by formulating a novel
-experience reply buffer and objective function that is compatible with the use
+demonstrates that distilation enables knowledge sharing among tasks and increases performance.
+This work extends the DQN algorithm by formulating a novel
+experience reply buffer and objective function that are compatible with the use
 of options.
 
 An application of particular interest in Hierarchical Reinforcement learning
 is conversational agents. This is a natural application of hierarchical
-reinforcement learning because the tasks that these agents will be asked
+reinforcement learning because the tasks that conversational agents are asked
 to complete are often very similar and therefore can share sub-routines
 (i.e. options). For instance, a travel agent system will need to book
 and pay for a number of items such as a hotel rooms, cars, and plane tickets.
+Therefore, it makes sense that booking and payment skills should be shared sub-routines.
 Both [Composite task-completion] and [Sub-domain Modelling] apply hierarchical
-reinforcement learning to this task of dialogue management. [Sub-domain Modelling]
-uses pseudo rewards to train gaussian process policies for booking and payment options
+reinforcement learning to the task of dialogue management. [Sub-domain Modelling]
+uses pseudo rewards to train gaussian process policies for booking and payment options,
 which are shared by agents that make hotel and restaurant reservations respectively.
 Similarly, [Composite task-completion] applies the options using neural networks
 to dialogue management for the subtasks of booking an airplane ticket and reserving a hotel.
