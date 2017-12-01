@@ -1,13 +1,12 @@
-\section{HAM Reinforcement Learning [Sri]}
-\textbf{Description} \\
+\section{Hierarchical Abstract Machines}
 
-HAM brings about the concept of machines. A machine is a partial policy represented by a Finite State automaton. Thus, a machine has multiple states and actions, providing both state and temporal abstraction. Learning occurs within machines, as they are only partially defined. //
+HAM brings about the concept of machines. A machine is a partial policy represented by a Finite State automaton. Thus, a machine has multiple states and actions, providing both state and temporal abstraction. Learning occurs within machines, as they are only partially defined. \\
 
-Rather than expanding action choices like in options, it restricts the size of the class of policies. By doing it across multiple layers, HAMS allows policies to be specified as  hierarchies of stochastic finite-state machine. Thus, it exploits the advantages of SMDP with a simplied MDP. //
+Rather than expanding action choices like in options, it restricts the size of the class of policies. By doing it across multiple layers, HAMS allows policies to be specified as  hierarchies of stochastic finite-state machine. Thus, it exploits the advantages of SMDP with a simplied MDP. \\
 
-In HAM, the entire system is considered as a collection of machines. The machines have states. The possible states are: Action, Call, Choice and Stop. An action state generates an action of a core MDP. The call state halts the execution of the current machine and calls for the execution of another machine. The choice state non-deterministically selects the next state. The stop state terminates the execution of the current machine. The stack of calls brings about the hierarchy. When the initial state has actions with no call states, then this acts as a solution to basic flat RL. Being hierarchical, SMDP Q-learning can be applied to this set-up as well//
+In HAM, the entire system is considered as a collection of machines. The machines have states. The possible states are: Action, Call, Choice and Stop. An action state generates an action of a core MDP. The call state halts the execution of the current machine and calls for the execution of another machine. The choice state non-deterministically selects the next state. The stop state terminates the execution of the current machine. The stack of calls brings about the hierarchy. When the initial state has actions with no call states, then this acts as a solution to basic flat RL. Being hierarchical, SMDP Q-learning can be applied to this set-up as well. \\
 
-There are no large applications of HAM's so far. Modified frameworks like Programmable HAM's are provided. //
+There are no large applications of HAM's so far. Modified frameworks like Programmable HAM's are provided. \\
 
 
 \textbf{Strengths}
