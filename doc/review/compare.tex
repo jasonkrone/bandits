@@ -34,29 +34,8 @@ Unlike the other frameworks, the original proposal of HAM does not include any a
 \subsection{Expressiveness and Requirements}
 Options require complete specification of policy and would learn only if the policies to subproblems are given completely. It just learns the action flow between sub-problems. Hence, it becomes essential to come up with ways to learn the policies of sub-problems. Learning problems making use of options usually incorporate two types of learning: intra-option learning to learn the policies over actions within an option and inter-option learning to learn the policies over the options. This requirement of having to learn both these policies may make it result in non-modular structure with more additional time for computing multiple dimensions of policies. \\
 
-HAM’s also require a complete policy defined before learning the problem. This complete policy decides the representation of states inside a machine. However, unlike Options, HAM’s need not learn the best policies for sub-problems before finding the overall best solution. Also, as compared to the other two frameworks, HAM’s provide additional details like task hierarchy (machine-to-machine call stack) and amount of effort (time spent in each machine). Hence, they are very expressive. \\
+HAMs also require a complete policy defined before learning the problem. This complete policy decides the representation of states inside a machine. However, unlike Options, HAMs need not learn the best policies for sub-problems before finding the overall best solution. Also, as compared to the other two frameworks, HAMs provide additional details like task hierarchy (machine-to-machine call stack) and amount of effort (time spent in each machine). Hence, they are very expressive. \\
 
 Unlike Options and HAMs, MAXQ does not require the complete specification of the policy. It just requires a well-defined stack of sub-tasks. The less input knowledge and requirements in MAXQ makes it the most used framework among researchers. \\
-
-Thus, in all, the three frameworks of HRL can be summarized as given in Table:
-
-% \usepackage[table,xcdraw]{xcolor}
-% \documentclass[xcolor=table]{beamer}
-\begin{table}[]
-\centering
-\caption{My caption}
-\label{my-label}
-\begin{tabular}{|l|l|l|l|}
-\hline
-\rowcolor[HTML]{EFEFEF} 
-                              & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{OPTIONS}}                  & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{HAM}}                                                         & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}\textbf{MAXQ}}                                              \\ \hline
-\textbf{Temporal Abstraction} & Yes                                                                            & Yes                                                                                                               & Yes                                                                                                     \\ \hline
-\textbf{State Abstraction}    & Yes                                                                            & No                                                                                                                & \begin{tabular}[c]{@{}l@{}}Yes \\   Provides funneling and explicit removal of irrelevance\end{tabular} \\ \hline
-\textbf{Optimality}           & Hierarchical                                                                   & Hierarchical                                                                                                      & Recursive                                                                                               \\ \hline
-\textbf{Input Requirements}   & Complete Policy                                                                & Complete Policy                                                                                                   & Does not require,policy to be specified explicitly                                                      \\ \hline
-\textbf{Expressiveness}       & \begin{tabular}[c]{@{}l@{}}No explicit display\\   of information\end{tabular} & \begin{tabular}[c]{@{}l@{}}Provides\\   information like hierarchy, time spent and effort explicitly\end{tabular} & Just displays the,notion of hierarchy and nothing else                                                  \\ \hline
-\end{tabular}
-\end{table}
-
 
 
