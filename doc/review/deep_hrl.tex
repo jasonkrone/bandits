@@ -1,7 +1,8 @@
 \section{Recent Works on Hierarchical Reinforcement Learning}
-Note: for the purpose of this section we assume that recent works are papers released in 2016 or 2017.
-To a large degree recent work on hierarchical reinforcement learning focusses on leveraging recent advances in
-Deep Learning to augment the foundational hierarchical methods, which we described in the previous section.
+
+To a large degree recent work on hierarchical reinforcement learning focusses on leveraging recent
+\footnote{For the purpose of this section we assume that recent works are papers released in 2016 or 2017}
+advances in Deep Learning to augment the foundational hierarchical methods, which we described in the previous section.
 Consequently, recent papers are less theoretical and focus on techniques to improve the performance
 of existing methods when using neural networks as well as the application of hierarchical reinforcement learning
 to new, more complex environments, such as the Atari suite of games.
@@ -20,7 +21,7 @@ between its conception in 1999 and 2015, which made it more appealing to build u
 framework is more intuitive than HAM or MaxQ because an option essentially functions as a sub-policy that is
 selected like an action, and it is therefore quite easy to understand options given knowledge of MDPs and policies.
 
-The most theoretical work is [option critic], which extends options to allow for end-to-end learning
+The most theoretical work is \cite{Bacon}, which extends options to allow for end-to-end learning
 of internal policies and termination conditions for a given number of options using
 linear or non-linear function approximators. The primary contribution of this work is the proof
 of policy gradient theorems for options, which allow for the end-to-end learning of options.
@@ -29,19 +30,19 @@ all applications of Deep Learning to options aside from this paper have required
 or termination conditions to be pre-trained or pre-defined. While, the end-to-end learning of both internal policies
 and termination conditions is not yet prevalent in the literature, it is a logical extension, which gives superior
 performance, and will likely gain traction going forward. It is worth noting that one criticism of this work,
-, made in [Abiel], is that the options learned may be overly specific to the task at hand and not transfer well
+, made in \cite{Florensa}, is that the options learned may be overly specific to the task at hand and not transfer well
 to new similar tasks.
 
 Although no other works have learned the internal policies and termination conditions
-for the options they use, both [HDRL Integrating Temporal and Intrisinc] and
-[Stochastic NN] work to reduce the amount of hand engineering required
-to use options. [Stochastic NN] focuses on learning internal policies for options in an unsupervised manner
+for the options they use, both \cite{Tejas} and
+\cite{Florensa} work to reduce the amount of hand engineering required
+to use options. \cite{Florensa} focuses on learning internal policies for options in an unsupervised manner
 during a separate pre-training phase using a flexible proxy reward.
-Specifically, [Stochastic NN] found that Stochastic neural networks coupled with
+Specifically, \cite{Florensa} found that Stochastic neural networks coupled with
 a mutual information regularizer and a proxy reward, such as the speed of a
 robot in the continuous control setting, can reliably learn internal policies for
 options with minimal supervision. In contrast,
-[HDRL Integrating Temporal and Intrisinc] jointly learns both the policy over options
+\cite{Tejas} jointly learns both the policy over options
 as well as the internal policy used when executing the options. Both papers choose to
 use a single neural network to approximate all internal option policies. They do this
 by conditioning the network on a goal $g$, which can be thought of as selecting the
@@ -50,7 +51,7 @@ to approximate all internal option policies has the benefit of sharing knowledge
 across similar tasks as well as allowing space complexity to remain constant as
 the number of options grow.
 
-Similarly, the model used in [FeUdal Networks] learns both sub-manager policies and
+Similarly, the model used in \cite{Vezhnevets} learns both sub-manager policies and
 goals in a latent space. This paper provides a solution, which is learned entirely
 end-to-end. Moreover, they train the manager network using a transition
 policy gradient to output goals, which are semantically meaningful sub-goals.
@@ -61,20 +62,20 @@ One reason to use hierarchical reinforcement learning is
 to decompose the state space and learn a separate value function
 for each region of the state space in order to reduce the complexity of the reward
 function that any single value function must approximate. The paper
-[Hybrid Reward Architecture for Reinforcement Learning] builds off this idea
+\cite{Seijen} builds off this idea
 by decomposing the reward function and then learning separate value functions for
 each component of the reward function. The main contribution of this paper is
 the formulation of a Hybrid Reward Architecture that takes as input a decomposed
 reward function and trains a separate head for each component on top of a shared base
-network using the DQN [cite DQN] algorithm. This architecture has the advantage of
+network using the DQN algorithm \cite{Mnih}. This architecture has the advantage of
 removing irrelevant features and is able to learn more quickly using the decomposed
 reward function, which is smoother and easier to optimize.
 
-We have discussed how both [Stochastic NN] and [HDRL Integrating Temporal and Intrisinc]
+We have discussed how both \cite{Florensa} and \cite{Tejas}
 use a single neural network conditioned on a goal to approximate the policies of each option.
 In addition to training such a network from scratch, it is also possible to distil
 the knowledge from many expert internal policy networks to a single network with an
-output head for each internal policy. This is the approach taken in [Minecraft], which
+output head for each internal policy. This is the approach taken in \cite{Tessler}, which
 demonstrates that distilation enables knowledge sharing among tasks and increases performance.
 This work extends the DQN algorithm by formulating a novel
 experience reply buffer and objective function that are compatible with the use
@@ -87,15 +88,15 @@ to complete are often very similar and therefore can share sub-routines
 (i.e. options). For instance, a travel agent system will need to book
 and pay for a number of items such as a hotel rooms, cars, and plane tickets.
 Therefore, it makes sense that booking and payment skills should be shared sub-routines.
-Both [Composite task-completion] and [Sub-domain Modelling] apply hierarchical
-reinforcement learning to the task of dialogue management. [Sub-domain Modelling]
+Both \cite{Peng} and \cite{Budzianowski} apply hierarchical
+reinforcement learning to the task of dialogue management. \cite{Budzianowski}
 uses pseudo rewards to train gaussian process policies for booking and payment options,
 which are shared by agents that make hotel and restaurant reservations respectively.
-Similarly, [Composite task-completion] applies the options using neural networks
+Similarly, \cite{Peng} applies the options using neural networks
 to dialogue management for the subtasks of booking an airplane ticket and reserving a hotel.
-However, [Composite task-completion] uses options within a very large model that
+However, \cite{Peng} uses options within a very large model that
 includes Natural Language Generation and Natural Language Understanding
-submodules, while [Sub-domain Modelling] focuses almost solely on options and
+submodules, while \cite{Budzianowski} focuses almost solely on options and
 uses the PyDial dialogue modelling tool-kit to evaluate their architecture.
 
 
