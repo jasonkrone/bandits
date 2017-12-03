@@ -21,6 +21,7 @@ between its conception in 1999 and 2015, which made it more appealing to build u
 framework is more intuitive than HAM or MaxQ because an option essentially functions as a sub-policy that is
 selected like an action, and it is therefore quite easy to understand options given knowledge of MDPs and policies.
 
+\begin{subsection}{End-to-end Learning of Options}
 The most theoretical work is \cite{Bacon}, which extends options to allow for end-to-end learning
 of internal policies and termination conditions for a given number of options using
 linear or non-linear function approximators. The primary contribution of this work is the proof
@@ -32,7 +33,9 @@ and termination conditions is not yet prevalent in the literature, it is a logic
 performance, and will likely gain traction going forward. It is worth noting that one criticism of this work,
 , made in \cite{Florensa}, is that the options learned may be overly specific to the task at hand and not transfer well
 to new similar tasks.
+\end{subsection}
 
+\begin{subsection}{Replacing Hand Engineering with Deep Learning}
 Although no other works have learned the internal policies and termination conditions
 for the options they use, both \cite{Tejas} and
 \cite{Florensa} work to reduce the amount of hand engineering required
@@ -57,7 +60,9 @@ end-to-end. Moreover, they train the manager network using a transition
 policy gradient to output goals, which are semantically meaningful sub-goals.
 This paper is an outlier in so far as it is the only work we have
 reviewed, which is based on feudal reinforcement learning.
+\end{subsection}
 
+\begin{subsection}{Reward Function Decomposition}
 One reason to use hierarchical reinforcement learning is
 to decompose the state space and learn a separate value function
 for each region of the state space in order to reduce the complexity of the reward
@@ -70,7 +75,9 @@ reward function and trains a separate head for each component on top of a shared
 network using the DQN algorithm \cite{Mnih}. This architecture has the advantage of
 removing irrelevant features and is able to learn more quickly using the decomposed
 reward function, which is smoother and easier to optimize.
+\end{subsection}
 
+\begin{subsection}{Hierarchical Knowledge Distilation}
 We have discussed how both \cite{Florensa} and \cite{Tejas}
 use a single neural network conditioned on a goal to approximate the policies of each option.
 In addition to training such a network from scratch, it is also possible to distil
@@ -80,7 +87,9 @@ demonstrates that distilation enables knowledge sharing among tasks and increase
 This work extends the DQN algorithm by formulating a novel
 experience reply buffer and objective function that are compatible with the use
 of options.
+\end{subsection}
 
+\begin{subsection}{Applications: Conversational Agents}
 An application of particular interest in Hierarchical Reinforcement learning
 is conversational agents. This is a natural application of hierarchical
 reinforcement learning because the tasks that conversational agents are asked
@@ -98,5 +107,6 @@ However, \cite{Peng} uses options within a very large model that
 includes Natural Language Generation and Natural Language Understanding
 submodules, while \cite{Budzianowski} focuses almost solely on options and
 uses the PyDial dialogue modelling tool-kit to evaluate their architecture.
+\end{subsection}
 
 
