@@ -1,21 +1,20 @@
 \section{Introduction}
 Reinforcement learning is the problem of training an agent to maximize reward in an environement.
-More techically, the aim is to learn the optimal policy for selecting actions to take in a MDP;
-please see the appendix for definitions of the fundemental reinforcement learning terminology
+More techically, the aim is to learn the optimal policy for selecting actions to take in a MDP.
+Please see the appendix for definitions of the fundemental reinforcement learning terminology
 and equations.
 
 Recently there has been a great deal of progress in reinforcement learning. Most notably,
 the use of neural networks as function approximators has allowed for the application of
 reinforcment learning methods to problems with much larger state and action spaces.
-Despite these advances, problems where there is large temporal delay between actions and reward signal
-and long time horizons continue to be a difficult.
-An area of reinforcement learning that addresses these challenges is hierarchical reinforcement learning.
-Hierarchical reinforcement is focused on learning skills for completing subtasks and stringing these skills
+Despite these advances, long horizon problems  and those where there is large temporal delay between actions and reward signal continue to be a difficult.
+An area of reinforcement learning that addresses these challenges is hierarchical reinforcement learning (HRL).
+HRL is focused on learning skills for completing subtasks and stringing these skills
 together to act optimally in the environment. By breaking down a problem into smaller units, which can be learned
-over shortter time horizons with more feedback, hierarchical reinforcement learning is able to make progress on difficult
+over shorter time horizons with more feedback, HRL is able to make progress on difficult
 problems like the Atari game Montezuma's revenge.
 
-In this paper we review the most prominant hierarchical reinforcement learning frameworks, discuss their strengths and
+In this paper we review the most prominant HRL frameworks, discuss their strengths and
 weaknesses, and compare them with one another. We also provide a breif review of recent developments in the
-hierarchical reinforcement learning literature with an emphasis on deep hierarchical reinforcement learning.
+HRL literature with an emphasis on deep HRL.
 
