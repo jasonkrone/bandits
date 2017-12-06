@@ -1,11 +1,13 @@
 \section{Feudal Networks}
 
-Feudal Reinforcement Learning is modeled after a feudal fiefdom where the hierarchy consists
+In Feudal Reinforcement Learning the hierarchy consists
 of managers and sub-managers. At each intermediate level of the hierarchy an agent performs
-either a primitive action, belonging to the action set $A$ associated with the environment, or
-a special action, which passes control to a sub-manager. When a special action is selected, control is
-returned to the manager once the state changes at the managerial level. This approach relies on two
-forms of abstraction namely Reward Hiding and Information Hiding as described below.
+either a primitive action or
+a special action which passes control to a sub-manager. After a special action
+is completed control is
+returned to the manager once the state changes at the managerial level. This
+approach relies on two
+forms of abstraction; Reward Hiding and Information Hiding. \cite{Dayan}
 
 \begin{enumerate}
     \item Reward Hiding: Managers must reward sub-managers for doing their bidding whether or not this
@@ -14,8 +16,6 @@ forms of abstraction namely Reward Hiding and Information Hiding as described be
           their own choices of tasks. The task of each agent (manager / sub-manager) is only known to that
           agent. Managers do need to know satisfaction conditions for tasks they set.
 \end{enumerate}
-
-This structure brings with it both strengths and weaknesses. We shall begin by discussing the strengths.
 
 \textbf{Strengths}
 \begin{itemize}
@@ -27,8 +27,6 @@ This structure brings with it both strengths and weaknesses. We shall begin by d
           This makes it easier for agents to calculate which actions to take a learning using value function approximation.
 \end{itemize}
 
-The abstractions mentioned above also create weaknesses.
-
 \textbf{Weaknesses}
 \begin{itemize}
     \item The success of Feudal Reinforcement learning assumes there is a natural hierarchical division of the environment
@@ -38,8 +36,6 @@ The abstractions mentioned above also create weaknesses.
 \end{itemize}
 
 \textbf{Flexibility} \\
-Feudal reinforcement learning is quite flexible. Sub-tasks delegated to sub-managers can be learned as is done in
-FeUdal Networks for Hierarchical Reinforcement Learning. In addition, there can be an arbitrary number of levels in the
-hierarchy. The main constraint is that the environment must be early decomposed using a hierarchical structure, which
-must be specified.
+The main constraint in Feudal RL is that the environment must be early
+decomposed using a predefined hierarchical structure.
 
