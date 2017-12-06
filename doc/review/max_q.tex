@@ -1,9 +1,9 @@
 \subsection{MAX-Q}
-Max-Q reinforcement learning takes inspiration from both feudal learning and
-AMs. Similar to feudal learning Max-Q breaks a goal into a hierarchy of tasks
+Max-Q reinforcement learning is very similar to both feudal learning and
+HAMs. Similar to feudal learning Max-Q breaks a goal into a hierarchy of tasks
 and subtasks (similar to managers and submanagers). Though these tasks and
-subtasks must be defined by the programmer, there has been some research into
-automatic discovery of tasks like landmark states and bottleneck discovery.
+subtasks must be defined by the programmer there has been some research into
+automatic discovery of tasks via landmark states and bottleneck discovery.
 
 Like a HAM, the Max-Q framework decomposes the goal task without increasing
 the state space. What separates the Max-Q framework from HAM and feudal
@@ -21,20 +21,12 @@ V^{\pi}(a, s) + c^{\pi}(i, s, a), & \text{if i is composite}\\
 Where $c^{\pi}$ is the completion value, which is realized when the chosen
 subtask is completed. \cite{Dietterich}
 
-\textbf{Strengths}
-\begin{itemize}
-    \item Max-Q learning introduces recursive optimality, which allows subtasks	to reach their goals independent of the needs of the parent task.
-    \item Depending on the decomposition of subtasks, related subtasks can share experience.
-    \item The state space is decreased for each individual task.
-\end{itemize}
+Max-Q learning introduces recursive optimality, which allows subtasks to reach
+their goals independent of the needs of the parent task and depending on the
+decomposition of subtasks, related subtasks can share experience. Unfortunately,
+a recursively optimal solution is not necessarily globally optimal. Also
+the decomposition must be done manually, and a poor decomposition could lead
+to unexpected results.
 
-\textbf{Weaknesses}
-\begin{itemize}
-    \item A recursively optimal solution is not necessarily globally optimal.
-    \item Task decomposition must be done manually, and a poor decomposition could lead to unexpected results
-    \item A chosen action that is running to completion may become suboptimal during its execution.
-\end{itemize}
-
-\textbf{Flexibility} \\
 Because Max-Q learning decomposes tasks in the same way as feudal learning, it is no more flexible in application.
 

@@ -2,11 +2,21 @@
 
 Hierarchical Abstract Machines (HAM) use a hierarchy of nondeterministic finite state machines, each defined by a partial policy.
 HAMs provide a flexible way of limiting the number of actions an agent can take at each state.
-A machine is defined by an initial state determined by a start function, a set of states and a transition function.
-The states are: Action, Call, Choice and Stop. An action state generates
-an primitive MDP acation. The call state halts the
+A machine is defined by an initial state determined by a start function, a set of states $<Action,\ Call,\ Choice,\ Stop>$, and a transition function.
+%The states are: Action, Call, Choice and Stop.
+An action state generates
+an primitive MDP action. The call state halts the
 execution of the current machine and calls another
 machine. The choice state non-deterministically selects the next state, governed by the transition function. The
 stop state terminates the execution of the current machine and returns it to the previous call state. The HAM setup includes one start machine and all machines reachable from the initial state of this machine. This hierarchical setup allows for SMDP Q-learning. \cite{Parr}
 
-Theoretically, it is the most flexible framework. Options can be represented by HAMs by omitting the call state. However, all HAMs cannot be represented by options unless one option's policy allows for other options to be called. We have not encountered such a case in our study. They can be extended to POMDPs by only using the choice state of the machine when the agent is completely certain of the current state in the POMDP. It is unclear whether they can be applied to POMDPs when such states do not exist. HAMs work because they constrain the policy at each state, effectively reducing the state space. Poorly defined machines will reduce the state space to a point where the original problem is no longer meaningful. 
+Theoretically, it is the most flexible framework. Options can be represented
+by HAMs by omitting the call state, but all HAMs cannot be represented by
+options unless one option's policy allows for other options to be called. We
+have not encountered such a case in our study. They can be extended to POMDPs
+by only using the choice state of the machine when the agent is completely
+certain of the current state in the POMDP. It is unclear whether they can be
+applied to POMDPs when such states do not exist. HAMs work because they
+constrain the policy at each state, effectively reducing the state space.
+Poorly defined machines will reduce the state space to a point where the
+original problem is no longer meaningful.
