@@ -62,6 +62,7 @@ A policy is recursively optimal if the solutions to each of its sub-problems is 
 Such a solution respects the hierarchy but does not yield the globally optimal solution in all the cases.
 Given the optimal policies to the sub-problems, a recursively optimal solution is simply the chain of these optimal sub-problems.
 
+\iffalse
 Consider a robotic agent in an environment with two rooms as given in Fig 1(a).
 There are two passages between the two rooms. The task of the agent is to move from Room 1 to Room 2.
 The actions available to the agent are moving in any of the four directions and the possible states
@@ -111,12 +112,11 @@ The agent overlooks the location of the goal in the second Room while considerin
     \caption{Example to illustrate optimality}
 
 \end{figure}
+\fi
 
 \subsubsection*{Hierarchical Optimality}
 
-A policy is hierarchically optimal if it is the most optimal amongst all the policies that respect the hierarchy. Such a solution need not be optimal on each of its subproblems. As evident from Fig 1(c), the agent in this case tries to make its way out of Room 1 maximizing his prospects of reaching the goal in the best possible way. In other words, in hierarchical optimality the presence of hierarchy is respected and is strictly adhered to. On the other hand, a recursive optimality keeps in mind the hierarchy but alters it to prioritize the subtasks first. As the overall hierarchy is put forth first, a solution with hierarchical optimality is always lesser than that of recursive optimality. Despite the con, recursive optimality gives the payoff of modularity. 
-
-Consider a laser beam midway in Room 2, which destroys the agent completely. Due to its immense negative impact, an extremely negative reward is kept aside for crossing the beam. Despite this high negative reward, the recursively optimal solution remains the same for Room 1. However, a hierarchically optimal solution makes sure that the agent is always directed towards the lower passage in Room 1. For this extended example, the hierarchical solution has an upper hand over the recursive one. 
+A policy is hierarchically optimal if it is the most optimal amongst all the policies that respect the hierarchy. Such a solution need not be optimal on each of its subproblems. In other words, in hierarchical optimality the presence of hierarchy is respected and is strictly adhered to. On the other hand, a recursive optimality keeps in mind the hierarchy but alters it to prioritize the subtasks first. As the overall hierarchy is put forth first, a solution with hierarchical optimality is always lesser than that of recursive optimality. Despite the con, recursive optimality gives the payoff of modularity. 
 
 
 \subsubsection*{Flat Optimality}
