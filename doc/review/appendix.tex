@@ -50,14 +50,14 @@ time-steps by executing action \(a\).
 The expected rewards \(R(s,a)\) denotes the reward accumulated by executing action
 \(a\) in state \(s\) and waiting for \(\tau\) time-steps.
 
-\section*{Optimality in Hierarchical RL}
+\subsection*{Optimality in Hierarchical RL}
 
 In a flat reinforcement problem, optimality is achieved by solving the entire problem spawning through multiple
 state spaces. However, this optimization is not straightforward with hierarchies.
 Optimality can either be achieved granularly at each depth or else it can be achieved for the entire problem.
 These differences bring about three different types of optimality in the HRL framework: Recursive, Hierarchical and Flat.
 
-\subsection*{Recursive Optimality}
+\subsubsection*{Recursive Optimality}
 A policy is recursively optimal if the solutions to each of its sub-problems is optimal.
 Such a solution respects the hierarchy but does not yield the globally optimal solution in all the cases.
 Given the optimal policies to the sub-problems, a recursively optimal solution is simply the chain of these optimal sub-problems.
@@ -112,13 +112,13 @@ The agent overlooks the location of the goal in the second Room while considerin
 
 \end{figure}
 
-\subsection*{Hierarchical Optimality}
+\subsubsection*{Hierarchical Optimality}
 
 A policy is hierarchically optimal if it is the most optimal amongst all the policies that respect the hierarchy. Such a solution need not be optimal on each of its subproblems. As evident from Fig 1(c), the agent in this case tries to make its way out of Room 1 maximizing his prospects of reaching the goal in the best possible way. In other words, in hierarchical optimality the presence of hierarchy is respected and is strictly adhered to. On the other hand, a recursive optimality keeps in mind the hierarchy but alters it to prioritize the subtasks first. As the overall hierarchy is put forth first, a solution with hierarchical optimality is always lesser than that of recursive optimality. Despite the con, recursive optimality gives the payoff of modularity. 
 
 Consider a laser beam midway in Room 2, which destroys the agent completely. Due to its immense negative impact, an extremely negative reward is kept aside for crossing the beam. Despite this high negative reward, the recursively optimal solution remains the same for Room 1. However, a hierarchically optimal solution makes sure that the agent is always directed towards the lower passage in Room 1. For this extended example, the hierarchical solution has an upper hand over the recursive one. 
 
 
-\subsection*{Flat Optimality}
+\subsubsection*{Flat Optimality}
 
 Unlike the other two optimalitys, a flat solution does not respect hierarchy. It simply yields us the solution which is globally the most optimal. 
