@@ -1,11 +1,11 @@
 \subsection{Hierarchical Abstract Machines}
 
-Hierarchical Abstract Machines (HAM) \cite{Parr} use a hierarchy of nondeterministic finite state machines, each defined by a partial policy.
+Hierarchical Abstract Machines (HAM) \cite{Parr} use a hierarchy of non-deterministic finite state machines, each defined by a partial policy.
 HAMs provide a flexible way of limiting the number of actions an agent can take at each state.
 A machine is defined by an initial state determined by a start function, a set of states $<Action,\ Call,\ Choice,\ Stop>$, and a transition function.
 %The states are: Action, Call, Choice and Stop.
 An action state generates
-an primitive MDP action. The call state halts the
+a primitive MDP action. The call state halts the
 execution of the current machine and calls another
 machine. The choice state non-deterministically selects the next state, governed by the transition function. The
 stop state terminates the execution of the current machine and returns it to the previous call state. The HAM setup includes one start machine and all machines reachable from the initial state of this machine. This hierarchical setup allows for SMDP Q-learning. 
