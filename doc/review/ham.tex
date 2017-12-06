@@ -13,7 +13,7 @@ stop state terminates the execution of the current machine and returns it to the
 Theoretically, it is the most flexible framework. Options can be represented
 by HAMs by omitting the call state, but all HAMs cannot be represented by
 options unless one option's policy allows for other options to be called. We
-have not encountered such a case in our study. They can be extended to POMDPs
+have not encountered such a case in our study. They can be extended to Partially Observable MDPs (POMDP)
 by only using the choice state of the machine when the agent is completely
 certain of the current state in the POMDP. It is unclear whether they can be
 applied to POMDPs when such states do not exist. HAMs work because they
