@@ -61,9 +61,6 @@ These differences bring about three different types of optimality in the HRL fra
 A policy is recursively optimal if the solutions to each of its sub-problems is optimal.
 Such a solution respects the hierarchy but does not yield the globally optimal solution in all the cases.
 Given the optimal policies to the sub-problems, a recursively optimal solution is simply the chain of these optimal sub-problems.
-It brings about modularity, thus, decreasing the learning horizon.
-Hence, recursively optimal solution might be advantageous in problems with extremely large state space.
-However, in smaller set-up, it tends to show great deviations from the most optimal solution.
 
 Consider a robotic agent in an environment with two rooms as given in Fig 1(a).
 There are two passages between the two rooms. The task of the agent is to move from Room 1 to Room 2.
@@ -77,7 +74,7 @@ One of the policies which could be defined for this scenario is shown in Fig 1(c
 which is to move downwards in Room 2 and move in the direction of the passage which is nearer
 both to the agent and the goal. Another valid policy, as given in Fig 1(d), would be to leave
 Room 1 from the nearest passage and move downwards in Room 2. Note that in either cases,
-the policy in Room 2 remains the same. The question to be pondered upon is which one of these is optimal.
+the policy in Room 2 remains the same. The question is which one of these is optimal?
 In the hierarchical set-up, both are optimal. The hierarchy in this case comes from the fact that
 the entire problem is divided into two subtasks: exiting Room 1 through one of those passages and then
 navigating to the goal. The former approach is hierarchically optimal whereas the later is recursively optimal.
@@ -124,4 +121,4 @@ Consider a laser beam midway in Room 2, which destroys the agent completely. Due
 
 \subsection*{Flat Optimality}
 
-Unlike the other two optimalitys, a flat solution does not respect hierarchy. It simply yields us the solution which is globally the most optimal. It might not even compute the solutions to the individual subproblems. 
+Unlike the other two optimalitys, a flat solution does not respect hierarchy. It simply yields us the solution which is globally the most optimal. 
