@@ -1,41 +1,15 @@
 \subsection{Options}
 
-We know that MDPs are discrete time stepped, while SMDPs are continuous.
-Options aim to take the advantages of both MDPs and SMDPs by temporally
-extending actions with well-defined policies \cite{Sutton}.
-
-Options give both temporal and state abstraction by developing a notion of a
-state defined by a tuple containing the initiation and termination
-conditions for any state, and a policy to be followed in that state.
-
-Consider the open-the-door example for a robot system. An example option considers
-the policy for reaching, grasping and turning the door knob. The door being
-opened is the termination condition. Input states is the set of states the
-robot can be in. The open-the-door option can indeed be a part of a big goal to
-go from one place to another.
-
-Adding semi markov options to a core MDP (simple finite MDP with simplest option) yields a
+Options aim to optimize both MDPs and SMDPs by temporally
+extending actions with well-defined policies \cite{Sutton}. Options give both temporal and state abstraction by developing a notion of a
+state defined by a policy to be followed in that state, and initiation and termination
+conditions. Consider a robot navigating through rooms with doors. An example option considers
+reaching, grasping and turning the door knob as one temporally extended action. The door being
+opened is the termination condition. Adding semi markov options to a core MDP (simple finite MDP with simplest option) yields a
 discrete-time SMDP whose actions are options and rewards are the returns
-delivered during execution.
-
-In options, learning occurs at the terminal state. Policies are learnt
+delivered during execution. In options, learning occurs at the terminal state, while policies are learnt
 greedily. Intra-options algorithms give a new way to evaluate rewards and
-actions before termination.
+actions before termination. Options extend the notion of MDP from RL, and hence the flat options can be used as any RL framework.
 
-\textbf{Strengths}
-\begin{itemize}
-    \item Provide a faster rate of learning during the intial stages
-    \item If the state of options does not include one-step options with primitive actions, then they can be very easily solved. In this case, options provide both simplicity and augmentation
-    \item The state space is decreased for each individual task.
-\end{itemize}
 
-\textbf{Weaknesses}
-\begin{itemize}
-    \item Requires complete specification of policies and hence, the requirements are stringent
-    \item Unlike MAXQ, they can input only a complete policy. Task hierarchies and other user requirements like amount of effort cannot be taken as inputs
-    \item Does not simply complex MDP
-    \item Policy learning achieves optimal subgoals and assumes that a chain of such subgoals yiels overall global optimum which need not be true
-\end{itemize}
-
-\textbf{Flexibility} \\
-It extends the notion of MDP from RL, and hence the flat options can be used as any RL framework.
+Options are useful because they provide a faster rate of learning during the intial stages. In the example above, the sequence of operations to open a door would have to be learned. If the set of options does not include one-step options with primitive actions, then they can be very easily solved. In this case, options provide both simplicity and augmentation. Also, the state space is decreased for each individual task. The downside to options are they require complete specification of policies and hence, the requirements are stringent. Unlike MAXQ, they can input only a complete policy. Task hierarchies and other user requirements like amount of effort cannot be taken as inputs. Finally, policy learning achieves optimal subgoals and assumes that a chain of such subgoals yiels overall global optimum which need not be true.
