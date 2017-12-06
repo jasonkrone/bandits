@@ -1,15 +1,27 @@
-\subsection{Options}
+\section{Options}
+One of the most widely used frameworks in the HRL community is options \cite{Sutton}.
+The basic idea of options is to find solutions, intra-option policies, to subproblems, and to allow
+for these solutions to be called and executed as if they were actions.
+Option consist of a stationary stochastic policy \(\pi:S \times U_{s \in \mathcal{S}}  \mathcal{A}_s \rightarrow [0,1]\),
+an initiation set \(\mathcal{I} \subseteq  \mathcal{S}\) which includes of all the states where the option can be called,
+and a termination condition \(\beta:\mathcal{S} \rightarrow [0,1]\) which gives the probability of a state being terminal.
+When an option is executed, actions taken in the environment are selected according to \(\pi\) until termination.
+Once an option terminates, the agent is then free to execute another option. In the original formulation of options it
+is assumed that intra-option policies are given and remain frozen. Alleviating this constraint is the focus of many
+recent works, which we discuss later in the paper.
 
-Options aim to optimize both MDPs and SMDPs by temporally
-extending actions with well-defined policies \cite{Sutton}. Options give both temporal and state abstraction by developing a notion of a
-state defined by a policy to be followed in that state, and initiation and termination
-conditions. Consider a robot navigating through rooms with doors. An example option considers
-reaching, grasping and turning the door knob as one temporally extended action. The door being
-opened is the termination condition. Adding semi markov options to a core MDP (simple finite MDP with simplest option) yields a
-discrete-time SMDP whose actions are options and rewards are the returns
-delivered during execution. In options, learning occurs at the terminal state, while policies are learnt
-greedily. Intra-options algorithms give a new way to evaluate rewards and
-actions before termination. Options extend the notion of MDP from RL, and hence the flat options can be used as any RL framework.
+Therefore, learning (in the options context) typically refers to learning a policy over options.
+Learning is most commonly done using the Q-learning algorithm. To reduce the complexity of learning
+both basic actions and options, the options framework treats actions as options. This is done by
+setting the initiation set to contain only the current state and setting the termination condition
+for that state set to 1. Below we give the Bellman equations that define the Q-learning updates
+used to learn a policy over options. Note that this equation is for an SMDP given the use of options
+transforms an MDP into an SMDP; please see our appendix for further information on SMDPs and the
+action-value function.
 
+\begin{equation}
+    Q_{k+1} (s,o)=(1-\alpha_k ) Q_k (s,o)+\alpha_k [r+ \gamma^\tau.   \max_{o' \in O_{s'}}⁡ Q_k (s',o' )]
+\end{equation}
 
-Options are useful because they provide a faster rate of learning during the intial stages. In the example above, the sequence of operations to open a door would have to be learned. If the set of options does not include one-step options with primitive actions, then they can be very easily solved. In this case, options provide both simplicity and augmentation. Also, the state space is decreased for each individual task. The downside to options are they require complete specification of policies and hence, the requirements are stringent. Unlike MAXQ, they can input only a complete policy. Task hierarchies and other user requirements like amount of effort cannot be taken as inputs. Finally, policy learning achieves optimal subgoals and assumes that a chain of such subgoals yiels overall global optimum which need not be true.
+The above update is applied upon the termination of \(o\) at state \(s'\)
+after executing for \(\tau\) time-steps, and \(r\) is the return accumulated during \(o^'\) s execution.  \\
