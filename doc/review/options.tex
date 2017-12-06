@@ -1,20 +1,20 @@
 \section{Options}
 One of the most widely used frameworks in the HRL community is options \cite{Sutton}.
-The basic idea of options is to find solutions, intra-option policies, to subproblems, and to allow
-for these solutions to be called and executed as if they were actions.
+The basic idea of options is to find solutions, intra-option policies, to subproblems and to allow
+for these solutions to be executed as if they were actions.
 Option consist of a stationary stochastic policy \(\pi:S \times U_{s \in \mathcal{S}}  \mathcal{A}_s \rightarrow [0,1]\),
-an initiation set \(\mathcal{I} \subseteq  \mathcal{S}\) which includes of all the states where the option can be called,
-and a termination condition \(\beta:\mathcal{S} \rightarrow [0,1]\) which gives the probability of a state being terminal.
-When an option is executed, actions taken in the environment are selected according to \(\pi\) until termination.
+an initiation set \(\mathcal{I} \subseteq  \mathcal{S}\) (all the states where the option can be called),
+and a termination condition \(\beta:\mathcal{S} \rightarrow [0,1]\) (the probability a state being terminal).
+When an option is executed, actions are taken in the environment according to \(\pi\) until termination.
 Once an option terminates, the agent is then free to execute another option. In the original formulation of options it
 is assumed that intra-option policies are given and remain frozen. Alleviating this constraint is the focus of many
 recent works, which we discuss later in the paper.
 
-Therefore, learning (in the options context) typically refers to learning a policy over options.
-Learning is most commonly done using the Q-learning algorithm. To reduce the complexity of learning
-both basic actions and options, the options framework treats actions as options. This is done by
+Learning (in the options context) typically refers to learning a policy over options.
+Learning is most commonly done using the Q-learning algorithm. To reduce the complexity of learning,
+the options framework treats actions as options. This is done by
 setting the initiation set to contain only the current state and setting the termination condition
-for that state set to 1. Below we give the Bellman equations that define the Q-learning updates
+for that state set to one. Below we give the Bellman equations that define the Q-learning updates
 used to learn a policy over options. Note that this equation is for an SMDP given the use of options
 transforms an MDP into an SMDP; please see our appendix for further information on SMDPs and the
 action-value function.
