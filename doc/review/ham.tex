@@ -1,40 +1,12 @@
 \subsection{Hierarchical Abstract Machines}
 
-HAM brings about the concept of machines. A machine is a partial policy
-represented by a Finite State automaton. Such a machine has multiple states
-and actions, providing both state and temporal abstraction with learning occuring
-within machines, as they are only partially defined. Rather than expanding
-action choices like in options, HAM restricts the size of
-the class of policies across multiple layers, allowing HAM policies
-to be specified as  hierarchies of stochastic finite-state machines.
-
-In a HAM, the entire system is considered as a collection of stateful machines.
-Possible states are: Action, Call, Choice and Stop. An action state generates
+Hierarchical Abstract Machines (HAM) use a hierarchy of nondeterministic finite state machines, each defined by a partial policy.
+HAMs provide a flexible way of limiting the number of actions an agent can take at each state.
+A machine is defined by an initial state determined by a start function, a set of states and a transition function.
+The states are: Action, Call, Choice and Stop. An action state generates
 an primitive MDP acation. The call state halts the
 execution of the current machine and calls another
-machine. The choice state non-deterministically selects the next state. The
-stop state terminates the execution of the current machine \cite{Parr}. When
-the initial state has actions with no
-call states, then this acts as a solution to basic flat RL. Being
-hierarchical, SMDP Q-learning can be applied to this set-up as well.
+machine. The choice state non-deterministically selects the next state, governed by the transition function. The
+stop state terminates the execution of the current machine and returns it to the previous call state. The HAM setup includes one start machine and all machines reachable from the initial state of this machine. This hierarchical setup allows for SMDP Q-learning. \cite{Parr}
 
-\textbf{Strengths}
-\begin{itemize}
-    \item Theoretically, it is the most flexible framework allowing multiple inputs like policy, task hierarchy and effort required. Note that except for the policy, other inputs are optional
-    \item Can be extended to partial programs
-    \item Has lesser stringent requirements than options
-    \item Allows concurrency by letting simultaneous functioning of multiple machines
-    \item Abstraction can be embedded into the system using three value decomposition
-    \item Provides a richer representation and concurrency
-\end{itemize}
-
-\textbf{Weaknesses}
-\begin{itemize}
-    \item Needs a proper mechanism for designing the machines
-    \item Requires a complete policy
-    \item No abstraction is provided in the original specification
-\end{itemize}
-
-\textbf{Flexibility}\\
-HAMs can easily be reduced to many other hierarchical reinforcement learning
-frameworks, making them one of the more flexible options available.
+Theoretically, it is the most flexible framework. Options can be represented by HAMs by omitting the call state. However, all HAMs cannot be represented by options unless one option's policy allows for other options to be called. We have not encountered such a case in our study. They can be extended to POMDPs by only using the choice state of the machine when the agent is completely certain of the current state in the POMDP. It is unclear whether they can be applied to POMDPs when such states do not exist. HAMs work because they constrain the policy at each state, effectively reducing the state space. Poorly defined machines will reduce the state space to a point where the original problem is no longer meaningful. 
