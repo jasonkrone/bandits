@@ -1,14 +1,14 @@
 \subsection{MAX-Q}
-Max-Q reinforcement learning \cite{Dietterich} is very similar to both feudal learning and
-HAMs. Similar to feudal learning, Max-Q breaks a goal into a hierarchy of tasks
+Max-Q reinforcement learning \cite{Dietterich} is very similar to both feudal reinforcement learning and
+HAMs. Similar to feudal RL, Max-Q breaks a goal into a hierarchy of tasks
 and subtasks (similar to managers and submanagers). Though these tasks and
 subtasks must be defined by the programmer there has been some research into
 automatic discovery of tasks via landmark states and bottleneck discovery.
 
-Like a HAM, the Max-Q framework decomposes the goal task without increasing
+Like a HAM, the Max-Q framework decomposes the task without increasing
 the state space. What separates the Max-Q framework from HAM and feudal
-learning is the decomposition of the value function. In Max-Q learning, the
-value function takes the following form.
+RL is that Max-Q does this by decomposing the value function.
+In Max-Q, the value function takes the following form:
 
 \begin{math}
 V^{\pi}(i, s) =
@@ -25,8 +25,9 @@ Max-Q learning introduces recursive optimality, which allows subtasks to reach
 their goals independent of the needs of the parent task and depending on the
 decomposition of subtasks, related subtasks can share experience. Unfortunately,
 a recursively optimal solution is not necessarily globally optimal. Also
-the decomposition must be done manually, and a poor decomposition could lead
+the decomposition must be done manually and poor decomposition can lead
 to unexpected results.
 
-Because Max-Q learning decomposes tasks in the same way as feudal learning, it is no more flexible in application.
+Because Max-Q learning decomposes tasks in the same way as feudal RL, it is equally as
+flexible as feudal RL.
 
