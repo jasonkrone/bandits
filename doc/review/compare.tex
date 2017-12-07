@@ -67,7 +67,8 @@ also enables a significant state abstraction.
 
 \subsection{Requirements}
 
-Options require complete specification of policy and are applicable only if the policies to subproblems are specified. It just learns the action flow between sub-problems. Hence, it becomes essential to come up with ways to learn the policies within these options.  This requirement of having to learn both these policies may make it result in non-modular structure with more additional time for computing multiple dimensions of policies. 
+The main limitation of options is that it requires the specification of intra-options policies.
+Hence, it becomes essential to come up with ways to learn intra-option policies.  This requirement of having to learn both these policies may make it result in non-modular structure with more additional time for computing multiple dimensions of policies. 
 
 HAMs also require a complete policy defined before learning the problem. This complete policy decides the representation of states inside a machine. However, unlike Options, HAMs need not learn the best policies for sub-problems before finding the overall best solution. Also, as compared to the other two frameworks, HAMs provide additional details like task hierarchy (machine-to-machine call stack) and amount of effort (time spent in each machine). Hence, they are very expressive. 
 
