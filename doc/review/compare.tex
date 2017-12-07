@@ -36,14 +36,34 @@ Through information hiding and reward hiding feudal RL allows learning to occur 
 Thus feudal RL is recursively optimal, modular, and quite flexible.
 \subsection{Abstraction}
 
-All hierarchical frameworks provide temporal abstraction, which is simply dividing the entire problem into temporally extended activities. However, not all frameworks obey state abstraction. In RL, each state is defined by a set of features (variables). State abstraction removes irrelevant features from the state to make it as compact and robust as possible. State Abstraction results in huge computational benefits as the unwanted details from states of subproblems are eliminated completely. 
+All hierarchical frameworks provide temporal abstraction, which is attained by decomposing the problem
+using temporally extended activities. However, not all frameworks allow for state abstraction.
+In RL, each state is defined by a set of features. State abstraction removes irrelevant features from
+the state to make it as compact. State abstraction is beneficial because it results in computational benefits given
+unnecessary details of states eliminated.
 
-MAXQ provides state abstraction by retaining only some relevant variables for each task. For instance, as per Diettrich taxi problem, the destination of the passenger is irrelevant to the driver when he is picking him up. This detail is abstracted away from the driver when he is executing the pick-up sub task. MAXQ also provides abstraction through funneling. Funneling is the process of mapping many states to smaller subset of states. It makes sure that irrespective of which path is chosen, the agent always ends in the same subset of terminal states. The removal of irrelevance and the use of funneling, brings about commendable abstraction in MAXQ.
+Max-Q provides state abstraction by retaining only some relevant variables for each task.
+For instance, in the taxi problem that is discussed in \cite{Dietterich},
+the destination of the passenger is irrelevant to the driver.
+As a result, Max-Q abstracts this detail away for the driver.
+Max-Q also provides abstraction through funneling.
+Funneling is the process of mapping many states to a smaller subset of states.
+Funneling ensures that irrespective of which path is chosen,
+the agent always ends in the same subset of terminal states.
+In short, Max-Q enables a large degree of abstraction.
 
-In options, Q-learning occurs only at the initial and terminal states. It thus, provides multiple classes of states. This distinction between the states can be considered as abstraction. Note that, unlike MAXQ it does not get rid of irrelevance explicitly. However, it reduces the state space by giving a higher weightage to just a few states. 
+In the original formulation of options, Q-learning is done to learn a policy over options.
+Unlike Max-Q, the options framework does not get rid of irrelevant features explicitly.
+However, some state abstraction can be gained if the options cover most intermediate states
+and learning is mainly done to determine when to execute options.
+For these reasons options introduce a lesser degree of state abstraction than Max-Q.
 
-The original proposal of HAM does not include any abstraction. The reason being that all states are equally important and learning happens in all of them. Grouping of multiple states to machines brings about hierarchy but does not reduce the state space. Unlike HAMs, the primary purpose of feudal networks was to abstract away multiple states and hide lower level details of one state from the other. Thus, it also provides state abstraction. 
+The original proposal of HAM does not include any state abstraction.
+This is because all states are equally important and learning happens in all of them.
 
+The primary purpose of feudal RL is to provide state abstraction by hiding low level details
+of the state space from the upper levels of the hierarchy. Therefore, like Max-Q, feudal RL
+also enables a significant state abstraction.
 
 \subsection{Requirements}
 
