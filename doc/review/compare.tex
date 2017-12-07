@@ -39,15 +39,15 @@ Thus feudal RL is recursively optimal, modular, and quite flexible.
 All hierarchical frameworks provide temporal abstraction, which is attained by decomposing the problem
 using temporally extended activities. However, not all frameworks allow for state abstraction.
 In RL, each state is defined by a set of features. State abstraction removes irrelevant features from
-the state to make it as compact. State abstraction is beneficial because it results in computational benefits given
+the state to make it as compact as possible. State abstraction is beneficial because it results in computational benefits given
 unnecessary details of states eliminated.
 
 Max-Q provides state abstraction by retaining only some relevant variables for each task.
 For instance, in the taxi problem that is discussed in \cite{Dietterich},
 the destination of the passenger is irrelevant to the driver.
 As a result, Max-Q abstracts this detail away for the driver.
-Max-Q also provides abstraction through funneling.
-Funneling is the process of mapping many states to a smaller subset of states.
+Max-Q also provides abstraction through funneling,
+the process of mapping many states to a smaller subset of states.
 Funneling ensures that irrespective of which path is chosen,
 the agent always ends in the same subset of terminal states.
 In short, Max-Q enables a large degree of abstraction.
@@ -68,8 +68,8 @@ also enables a significant state abstraction.
 \subsection{Requirements}
 
 The main limitation of options is that it requires the specification of intra-options policies.
-Hence, it becomes essential to come up with ways to learn intra-option policies.  This requirement of having to learn both these policies may make it result in non-modular structure with more additional time for computing multiple dimensions of policies. 
+Hence, it becomes essential to come up with ways to learn intra-option policies.  This requirement of having to learn both these policies may make it result in non-modular structure with more additional time for computing multiple dimensions of policies.
 
-HAMs also require a complete policy defined before learning the problem. This complete policy decides the representation of states inside a machine. However, unlike Options, HAMs need not learn the best policies for sub-problems before finding the overall best solution. Also, as compared to the other two frameworks, HAMs provide additional details like task hierarchy (machine-to-machine call stack) and amount of effort (time spent in each machine). Hence, they are very expressive. 
+HAMs also require a complete policy defined before learning the problem. This complete policy decides the representation of states inside a machine. However, unlike Options, HAMs need not learn the best policies for sub-problems before finding the overall best solution. Also, as compared to the other two frameworks, HAMs provide additional details like task hierarchy (machine-to-machine call stack) and amount of effort (time spent in each machine). Hence, they are very expressive.
 
 Unlike Options and HAMs, MAXQ does not require the complete specification of the policy. It just requires a well-defined stack of sub-tasks. The less input knowledge and requirements in MAXQ makes it the most used and flexible framework among researchers.
