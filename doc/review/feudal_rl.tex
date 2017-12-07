@@ -1,21 +1,29 @@
 \subsection{Feudal Reinforcement Learning}
+The feudal RL \cite{Dayan} hierarchy consists of managers and sub-managers.
+At each level of the hierarchy the manager in control can either perform
+a primitive action or pass control to a sub-manager.
+When control is passed to a sub-manager, the manager must wait until
+the state changes at the managerial level before they can act again.
 
-The feudal RL \cite{Dayan} hierarchy consists
-of managers and sub-managers. At each intermediate level of the hierarchy an agent performs
-either a primitive action or a special action which passes control to a sub-manager.
-After a special action is completed, control is
-returned to the manager once the state changes at the managerial level. This
-approach relies on two
-forms of abstraction: Reward Hiding and Information Hiding. 
-With Reward Hiding, managers must reward sub-managers for doing their bidding whether or not this
-satisfies the commands of super-managers. With Information Hiding, managers only need to know the state of the system at the granularity of their own choices of tasks. The task of each agent (manager / sub-manager) is only known to that agent. Managers do need to know satisfaction conditions for tasks they set. The main constraint is the environment must be early
-decomposed using a predefined hierarchical structure.
-
-Like other hierarchical methods, the feudal structure reduces the state-space at the high levels.
-This makes it easier for agents to calculate which actions to take, learning using value function approximation.
+This approach relies on two forms of abstraction: 1. Reward Hiding 2. Information Hiding.
+Reward Hiding requires that managers reward sub-managers for achieving the goals they set.
+This is the case even if the actions taken by the sub-managers are of detriment to the goals of the manager.
 Reward Hiding enables low level sub-managers to learn from accomplishing sub-tasks early in training
 because the success of these sub-managers is not dependent on accomplishing the highest level goal.
-Additionally, there is  greater control over granularity by executing broad exploration from high levels
-and directed exploration from low levels in the hierarchy. However, Feudal RL assumes there is a natural hierarchical division of the environment and, ideally, the state space. Information Hiding can also create inefficiency by forcing sub-managers to learn to satisfy tasks that are irrelevant to accomplishing the highest level goals.
+Information Hiding requires that sub-managers only know information about the state of the system
+that is required to accomplish the task set by their manager. Therefore, the task of each agent (manager or sub-manager)
+is only known to that agent. Additionally, managers must know the satisfaction conditions for tasks they
+set for sub-managers so that they can reward them appropriately.
+
+Like other hierarchical methods, the feudal structure decomposes state-space such that each agent is
+only responsible for operating over a subset of all states. This makes it easier for each agent to
+learn a value function over their states and actions, which in turn makes it easier for agents to learn
+an optimal policy. Additionally, the hierarchy allows for greater control over exploration. Specifically,
+broad exploration can be executed at high level in the hierarchy and more granular exploration from low levels in the
+hierarchy.
+
+One drawback of feudal RL is that it assumes there is a natural hierarchical division of the environment and, ideally,
+the state space. In addition, Information Hiding can create inefficiency by teaching sub-managers  to satisfy tasks
+that are orthogonal to accomplishing the highest level goal.
 
 
