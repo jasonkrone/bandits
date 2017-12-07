@@ -39,15 +39,15 @@ Thus feudal RL is recursively optimal, modular, and quite flexible.
 All hierarchical frameworks provide temporal abstraction, which is attained by decomposing the problem
 using temporally extended activities. However, not all frameworks allow for state abstraction.
 In RL, each state is defined by a set of features. State abstraction removes irrelevant features from
-the state to make it as compact. State abstraction is beneficial because it results in computational benefits given
+the state to make it as compact as possible. State abstraction is beneficial because it results in computational benefits given
 unnecessary details of states eliminated.
 
 Max-Q provides state abstraction by retaining only some relevant variables for each task.
 For instance, in the taxi problem that is discussed in \cite{Dietterich},
 the destination of the passenger is irrelevant to the driver.
 As a result, Max-Q abstracts this detail away for the driver.
-Max-Q also provides abstraction through funneling.
-Funneling is the process of mapping many states to a smaller subset of states.
+Max-Q also provides abstraction through funneling,
+the process of mapping many states to a smaller subset of states.
 Funneling ensures that irrespective of which path is chosen,
 the agent always ends in the same subset of terminal states.
 In short, Max-Q enables a large degree of abstraction.
