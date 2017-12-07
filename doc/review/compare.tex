@@ -1,22 +1,39 @@
 \section{Comparison of various frameworks}
 
-The fundamental frameworks differ in the way a sub-problem is defined and how the Q-value is learnt inside and over the sub-problems. For comparison, three factors are considered: Optimality, Abstraction and the Input Requirements of the three models. 
+The frameworks we have discussed differ in the way sub-tasks are defined as well as how the action-value is learnt
+inside and over the sub-problems. In this comparison we consider three factors: Optimality, Abstraction,
+and Input Requirements.
 
 
 \subsection{Optimality}
 
-Recursive optimality provides modularity whereas hierarchical optimality yields a policy strictly adhering to  the hierarchy.  Modular solutions reduce the horizon by a large factor, on the other hand, better policies yields higher rewards. 
+We distinguish between two types of optimality: recursive optimality and hierarchical optimality.
+Recursively optimal frameworks learn at all levels in the hierarchy.
+In contrast, hierarchically optimal frameworks learn a policy over skills.
+Modular solutions are useful because they allow the policy at the highest level in the hierarchy to operate over longer
+time horizons. On the other hand, hierarchical optimality can often generate superior policies by optimizing
+all levels of the hierarchy.
 
-Options framework is analogous to any other RL framework with the set of options replacing the set of actions. It assumes that the policies internal to options are complete and frozen. A standard SMDP Q-learning is applied at the terminal states to learn the policies over options. As the learning happens over options (hierarchies), this framework produces a hierarchically optimal policy. 
+The options framework assumes that the policies internal to options are complete and frozen.
+Moreover, the aim of the learning process in the context of options is to find an optimal policy
+over options. Therefore, this framework produces a hierarchically optimal policy.
+Typically, a policy over options is learned using the SMDP variant of the Q-learning algorithm.
 
-HAM replaces the option with a non-deterministic finite state machine with various states. Multiple call states of machines stacked together forms the hierarchy. Q-values (flow of control over the machines) are learnt at the call/action state of each machine. These values are updated for every state-machine pair, rather than the states inside one machine. In other words, the internal transfer of states inside a machine is not optimized, rather the flow of control from one machine to another is. Thus, the policies over machines in HAMs is hierarchically optimal.  
+The HAM hierarchy is comprised of finite state machines where the call states form the links between levels in the hierarchy.
+Q-values (flow of control over the machines) are learnt at the call/action state of each machine.
+These values are updated for every state-machine pair rather than for the states inside one machine.
+Consequently, the flow of control from one machine to another is optimized rather than the internal transfer between states.
+For this reason HAMs are hierarchically optimal and similar to options.
 
+Max-Q decomposes a hierarchy using into tasks and subtasks.
+It learns to optimally solve each of these sub-tasks using
+value functions and chains these skills together to form one solution.
+Hence, it provides a recursively optimal solution.
+In short, Max-Q foregoes hierarchical optimality in favor of state abstraction.
 
-MAXQ describes a hierarchy of sub-tasks. It learns to optimally solve each of these sub-tasks and chains them to form one solution. Hence, it provides a recursively optimal solution. It gives up on hierarchical optimality for state abstraction. MAXQ prevents sub-tasks from being context dependent (overlook the overall picture) and thus, has compact value functions. However, it pays a price of optimality, which might be negligible for very large state space
-
-Feudal networks encapsulate the sub-managers functionalities and abstracts it away from that of the managers. This abstraction makes sure that the manager is not aware of the fundamental policies inside any of the sub-managers. This lower level hiding of details provides modularity and thus, these networks follow recursive optimality. 
-
-
+Feudal RL defines its hierarchy in terms of managers and sub-managers.
+Through information hiding and reward hiding feudal RL allows learning to occur at each level in the hierarchy.
+Thus feudal RL is recursively optimal, modular, and quite flexible.
 \subsection{Abstraction}
 
 All hierarchical frameworks provide temporal abstraction, which is simply dividing the entire problem into temporally extended activities. However, not all frameworks obey state abstraction. In RL, each state is defined by a set of features (variables). State abstraction removes irrelevant features from the state to make it as compact and robust as possible. State Abstraction results in huge computational benefits as the unwanted details from states of subproblems are eliminated completely. 
