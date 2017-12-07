@@ -68,8 +68,13 @@ also enables a significant state abstraction.
 \subsection{Requirements}
 
 The main limitation of options is that it requires the specification of intra-options policies.
-Hence, it becomes essential to come up with ways to learn intra-option policies.  This requirement of having to learn both these policies may make it result in non-modular structure with more additional time for computing multiple dimensions of policies. 
+Hence, it becomes essential to come up with ways to learn intra-option policies, which can be expensive.
 
-HAMs also require a complete policy defined before learning the problem. This complete policy decides the representation of states inside a machine. However, unlike Options, HAMs need not learn the best policies for sub-problems before finding the overall best solution. Also, as compared to the other two frameworks, HAMs provide additional details like task hierarchy (machine-to-machine call stack) and amount of effort (time spent in each machine). Hence, they are very expressive. 
+HAMs also require a complete policy defined before learning can begin.
+However, unlike options, HAMs need not learn the best policies for sub-problems before finding the overall best solution.
+HAMs also provide additional details like task hierarchy (machine-to-machine call stack) and amount of effort (time spent in each machine).
+These additions make HAMs more expressive than the other frameworks.
 
-Unlike Options and HAMs, MAXQ does not require the complete specification of the policy. It just requires a well-defined stack of sub-tasks. The less input knowledge and requirements in MAXQ makes it the most used and flexible framework among researchers.
+Unlike Options and HAMs, Max-Q does not require the complete specification of the policy.
+It just requires a well-defined stack of sub-tasks, which makes Max-Q more flexible than both
+options and HAMs.
